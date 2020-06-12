@@ -1,21 +1,80 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export default function SignUpForm() {
+    const [first_name, setFirst_name] = useState('');
+    const [last_name, setLast_name] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [password_confirmation, setPassword_confirmation] = useState('');
+    const [day, setDay] = useState('12');
+    const [month, setMonth] = useState('June');
+    const [year, setYear] = useState('1995');
+    const [gender, setGender] = useState('');
+    const [errors, setErrors] = useState([]);
+
+    const signUp = async (e) => {
+        e.preventDefault();
+        const formData = {
+            first_name,
+            last_name,
+            email,
+            password,
+            password_confirmation,
+            day,
+            month,
+            year,
+            gender,
+        };
+        try {
+            const response = await fetch('http://localhost:4000/users/sign-up', {
+                method: 'post',
+                mode: 'cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData),
+            });
+            const data = await response.json();
+            if (data.errors) {
+                setErrors(data.errors);
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
     return (
-        <form className="sign-up-form">
+        <form className="sign-up-form" onSubmit={(e) => signUp(e)}>
             <h1>Create an account</h1>
             <p>It's quick and easy.</p>
             <div className="names">
-                <input type="text" name="first_name" required placeholder="First name" />
-                <input type="text" name="last_name" required placeholder="Surname" />
+                <input
+                    type="text"
+                    name="first_name"
+                    required
+                    placeholder="First name"
+                    onChange={(e) => setFirst_name(e.target.value)}
+                />
+                <input
+                    type="text"
+                    name="last_name"
+                    required
+                    placeholder="Surname"
+                    onChange={(e) => setLast_name(e.target.value)}
+                />
             </div>
-            <input type="email" name="email" required placeholder="Email address" />
+            <input
+                type="email"
+                name="email"
+                required
+                placeholder="Email address"
+                onChange={(e) => setEmail(e.target.value)}
+            />
             <input
                 type="password"
                 name="password"
                 required
                 minLength="8"
                 placeholder="New password"
+                onChange={(e) => setPassword(e.target.value)}
             />
             <input
                 type="password"
@@ -23,10 +82,11 @@ export default function SignUpForm() {
                 required
                 minLength="8"
                 placeholder="Confirm password"
+                onChange={(e) => setPassword_confirmation(e.target.value)}
             />
             <p className="p-titles">Birthday</p>
             <div className="birthday-selects">
-                <select name="day">
+                <select name="day" onChange={(e) => setDay(e.target.value)}>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -38,7 +98,7 @@ export default function SignUpForm() {
                     <option value="9">9</option>
                     <option value="10">10</option>
                     <option value="11">11</option>
-                    <option value="12" selected>
+                    <option value="12" defaultValue>
                         12
                     </option>
                     <option value="13">13</option>
@@ -61,13 +121,13 @@ export default function SignUpForm() {
                     <option value="30">30</option>
                     <option value="31">31</option>
                 </select>
-                <select name="month">
+                <select name="month" onChange={(e) => setMonth(e.target.value)}>
                     <option value="1">Jan</option>
                     <option value="2">Feb</option>
                     <option value="3">Mar</option>
                     <option value="4">Apr</option>
                     <option value="5">May</option>
-                    <option value="6" selected>
+                    <option value="6" defaultValue>
                         Jun
                     </option>
                     <option value="7">Jul</option>
@@ -77,7 +137,7 @@ export default function SignUpForm() {
                     <option value="11">Nov</option>
                     <option value="12">Dec</option>
                 </select>
-                <select name="year">
+                <select name="year" onChange={(e) => setYear(e.target.value)}>
                     <option value="2020">2020</option>
                     <option value="2019">2019</option>
                     <option value="2018">2018</option>
@@ -103,7 +163,7 @@ export default function SignUpForm() {
                     <option value="1998">1998</option>
                     <option value="1997">1997</option>
                     <option value="1996">1996</option>
-                    <option value="1995" selected>
+                    <option value="1995" defaultValue>
                         1995
                     </option>
                     <option value="1994">1994</option>
@@ -201,18 +261,40 @@ export default function SignUpForm() {
             <p className="p-titles">Gender</p>
             <div className="gender-choices">
                 <div>
-                    <input type="radio" name="gender" value="Female" />
+                    <input
+                        type="radio"
+                        name="gender"
+                        value="Female"
+                        onChange={(e) => setGender(e.target.value)}
+                    />
                     <label htmlFor="gender">Female</label>
                 </div>
                 <div>
-                    <input type="radio" name="gender" value="Male" />
+                    <input
+                        type="radio"
+                        name="gender"
+                        value="Male"
+                        onChange={(e) => setGender(e.target.value)}
+                    />
                     <label htmlFor="gender">Male</label>
                 </div>
                 <div>
-                    <input type="radio" name="gender" value="Other" />
+                    <input
+                        type="radio"
+                        name="gender"
+                        value="Other"
+                        onChange={(e) => setGender(e.target.value)}
+                    />
                     <label htmlFor="gender">Other</label>
                 </div>
             </div>
+            {errors.length > 0 && (
+                <ul className="form-errors">
+                    {errors.map((error) => (
+                        <li key={error.param}>{error.msg}</li>
+                    ))}
+                </ul>
+            )}
             <button>Sign up</button>
         </form>
     );
