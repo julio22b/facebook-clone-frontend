@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import authHeader from '../../services/authHeader';
 
-export default function CreatePost({ username, profile_picture, user_id }) {
+export default function CreatePost({ username, profile_picture, user_id, setPosts }) {
     const [content, setContent] = useState('');
     const [image, setImage] = useState('');
     const [imagePreview, setImagePreview] = useState('');
@@ -19,9 +19,10 @@ export default function CreatePost({ username, profile_picture, user_id }) {
             headers: { 'Content-type': 'application/json', Authorization: authHeader() },
             body: JSON.stringify(postData),
         });
-        console.log(response);
         const data = await response.json();
-        console.log(data);
+        setPosts((posts) => posts.concat(data.post));
+        setImage('');
+        setContent('');
     };
 
     const handleFile = (e) => {
@@ -35,27 +36,28 @@ export default function CreatePost({ username, profile_picture, user_id }) {
     };
 
     return (
-        <section className="posts">
-            <form className="create-post" onSubmit={(e) => postCreate(e)}>
-                <div>
-                    <img src="" alt="" />
-                    <input
-                        type="text"
-                        name="content"
-                        required
-                        onChange={(e) => setContent(e.target.value)}
-                        placeholder={`What's on your mind, ${username}?`}
-                    />
-                    <input
-                        type="file"
-                        name="image"
-                        accept=".png, .jpg, .jpeg"
-                        onChange={(e) => handleFile(e)}
-                    />
-                </div>
-                <img src={imagePreview} alt="" />
-                <button>Create post</button>
-            </form>
-        </section>
+        <form className="create-post" onSubmit={(e) => postCreate(e)}>
+            <div>
+                <img src="" alt="" />
+                <textarea
+                    name="content"
+                    required
+                    onChange={(e) => setContent(e.target.value)}
+                    placeholder={`What's on your mind, ${username}?`}
+                    className="text-input"
+                    rows="1"
+                ></textarea>
+            </div>
+            <label htmlFor="image" className="file-input">
+                <input
+                    type="file"
+                    name="image"
+                    accept=".png, .jpg, .jpeg"
+                    onChange={(e) => handleFile(e)}
+                />
+            </label>
+            <img src={imagePreview} alt="" />
+            <button>Post</button>
+        </form>
     );
 }

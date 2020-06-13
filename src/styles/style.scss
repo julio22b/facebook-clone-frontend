@@ -1,8 +1,23 @@
+$gray: #f0f2f5;
+$border-gray: #b3b5b9;
+$blue: #1877f2;
+$gray-text: #5f666f;
+
+@mixin flex($direction: row, $justify-content: space-between, $align-items: stretch) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify-content;
+    align-items: $align-items;
+}
+
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     color: #333;
+}
+body {
+    background-color: $gray;
 }
 
 .log-in-page-header {
@@ -164,4 +179,104 @@
 .home-header {
     box-shadow: 0 2px 4px rgb(201, 200, 200);
     padding: 1em;
+}
+
+.placeholder-image {
+    border: 1px solid black;
+    border-radius: 50%;
+    background-color: black;
+    height: 45px;
+    width: 45px;
+}
+
+.posts {
+    width: 40%;
+    margin: 2em auto;
+
+    .create-post {
+        padding: 1em;
+        box-shadow: 0 0 3px $border-gray;
+        border-radius: 5px;
+        background-color: white;
+        div {
+            display: flex;
+            flex-wrap: wrap;
+            padding-bottom: 1em;
+            border-bottom: 1px solid $border-gray;
+            img {
+                @extend .placeholder-image;
+            }
+            .text-input {
+                border: 1px solid transparent;
+                border-radius: 20px;
+                cursor: pointer;
+                padding: 0.35em 0.7em;
+                background-color: $gray;
+                width: 89%;
+                font-size: 1.1rem;
+                margin-left: 10px;
+                resize: vertical;
+            }
+            .file-input {
+                display: block;
+                padding: 1em 0;
+                cursor: pointer;
+            }
+        }
+        button {
+            width: 100%;
+            background-color: $blue;
+            padding: 0.5em 0;
+            border: 1px solid transparent;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+            margin-top: 1em;
+            cursor: pointer;
+        }
+    }
+    .post-list {
+        margin-top: 2em;
+        article {
+            padding: 1em;
+            margin-bottom: 2em;
+            box-shadow: 0 0 3px $border-gray;
+            background-color: white;
+            border-radius: 5px;
+            .user-info {
+                display: flex;
+                margin-bottom: 15px;
+                img {
+                    @extend .placeholder-image;
+                }
+                figcaption {
+                    margin-left: 10px;
+                    flex: 1;
+                    @include flex(column);
+                    .username {
+                        color: black;
+                        font-weight: bold;
+                    }
+                    .post-date {
+                        color: $gray-text;
+                        font-size: 0.8rem;
+                    }
+                }
+            }
+            .post-content {
+                figcaption {
+                    font-size: 1.1rem;
+                }
+            }
+            .reactions-comment-count {
+                @include flex();
+                padding: 0.5em 0;
+                border-top: 1px solid $border-gray;
+                border-bottom: 1px solid $border-gray;
+                p {
+                    color: $gray-text;
+                }
+            }
+        }
+    }
 }
