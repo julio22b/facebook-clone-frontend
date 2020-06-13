@@ -6,7 +6,7 @@
   color: #333;
 }
 
-header {
+.log-in-page-header {
   padding: 1em 0;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -22,7 +22,7 @@ header {
   border-bottom: 1px solid #133783;
 }
 
-header .log-in-form {
+.log-in-page-header .log-in-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -31,9 +31,27 @@ header .log-in-form {
           align-items: flex-end;
   min-width: 300px;
   width: 30%;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
-header .log-in-form div {
+.log-in-page-header .log-in-wrapper > p {
+  width: 100%;
+  color: white;
+  text-indent: 10px;
+  margin-top: 5px;
+}
+
+.log-in-page-header .log-in-wrapper .log-in-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.log-in-page-header .log-in-wrapper .log-in-form div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -44,17 +62,17 @@ header .log-in-form div {
   margin: 0 10px;
 }
 
-header .log-in-form div label {
+.log-in-page-header .log-in-wrapper .log-in-form div label {
   color: white;
   margin-bottom: 7px;
 }
 
-header .log-in-form div input {
+.log-in-page-header .log-in-wrapper .log-in-form div input {
   border: 1px solid #1d2a5b;
   padding: 2px;
 }
 
-header .log-in-form button {
+.log-in-page-header .log-in-wrapper .log-in-form button {
   background-color: #4267b2;
   padding: 2px 5px;
   color: white;
@@ -64,7 +82,7 @@ header .log-in-form button {
   cursor: pointer;
 }
 
-header .log-in-form button:hover {
+.log-in-page-header .log-in-wrapper .log-in-form button:hover {
   background-color: #365899;
 }
 
@@ -208,5 +226,22 @@ header .log-in-form button:hover {
   color: #0e385f;
   margin: 1em;
   font-size: 1.7rem;
+}
+
+.form-errors {
+  padding: 1em 0;
+  list-style-position: inside;
+}
+
+.form-errors li {
+  color: #da3333;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.home-header {
+  -webkit-box-shadow: 0 2px 4px #c9c8c8;
+          box-shadow: 0 2px 4px #c9c8c8;
+  padding: 1em;
 }
 /*# sourceMappingURL=style.css.map */

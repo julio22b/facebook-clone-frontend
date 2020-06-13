@@ -7,7 +7,7 @@ import facebookLogo from '../../images/facebook-logo.png';
 export default function LogInHeader() {
     return (
         <>
-            <header>
+            <header classname="log-in-page-header">
                 <div>
                     <img src={facebookLogo} alt="facebook-logo" className="facebook-logo" />
                 </div>

@@ -5,7 +5,7 @@
     color: #333;
 }
 
-header {
+.log-in-page-header {
     padding: 1em 0;
     display: flex;
     justify-content: space-around;
@@ -13,34 +13,45 @@ header {
     background-color: #3b5998;
     background-image: linear-gradient(#4e69a2, #3b5998 50%);
     border-bottom: 1px solid #133783;
-    .log-in-form {
+    .log-in-wrapper {
         display: flex;
         align-items: flex-end;
         min-width: 300px;
         width: 30%;
-        div {
-            display: flex;
-            flex-direction: column;
-            margin: 0 10px;
-            label {
-                color: white;
-                margin-bottom: 7px;
-            }
-            input {
-                border: 1px solid #1d2a5b;
-                padding: 2px;
-            }
-        }
-        button {
-            background-color: #4267b2;
-            padding: 2px 5px;
+        flex-wrap: wrap;
+        & > p {
+            width: 100%;
             color: white;
-            font-weight: bold;
-            border: none;
-            border: 1px solid #29487d;
-            cursor: pointer;
-            &:hover {
-                background-color: #365899;
+            text-indent: 10px;
+            margin-top: 5px;
+        }
+        .log-in-form {
+            display: flex;
+            align-items: flex-end;
+            div {
+                display: flex;
+                flex-direction: column;
+                margin: 0 10px;
+                label {
+                    color: white;
+                    margin-bottom: 7px;
+                }
+                input {
+                    border: 1px solid #1d2a5b;
+                    padding: 2px;
+                }
+            }
+            button {
+                background-color: #4267b2;
+                padding: 2px 5px;
+                color: white;
+                font-weight: bold;
+                border: none;
+                border: 1px solid #29487d;
+                cursor: pointer;
+                &:hover {
+                    background-color: #365899;
+                }
             }
         }
     }
@@ -138,4 +149,19 @@ header {
             font-size: 1.7rem;
         }
     }
+}
+
+.form-errors {
+    padding: 1em 0;
+    list-style-position: inside;
+    li {
+        color: rgb(218, 51, 51);
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+}
+
+.home-header {
+    box-shadow: 0 2px 4px rgb(201, 200, 200);
+    padding: 1em;
 }
