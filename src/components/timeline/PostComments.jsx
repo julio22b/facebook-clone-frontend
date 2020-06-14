@@ -10,7 +10,7 @@ export default function PostComments({ comments }) {
                         <p className="username">{`${comment.user.first_name} ${comment.user.last_name}`}</p>
                         <p className="content">{comment.content}</p>
                     </figcaption>
-                    <p>{comment.timestamp}</p>
+                    <p className="timestamp">{comment.timestamp}</p>
                 </figure>
             ))}
         </div>

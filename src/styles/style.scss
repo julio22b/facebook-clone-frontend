@@ -271,10 +271,75 @@ body {
             .reactions-comment-count {
                 @include flex();
                 padding: 0.5em 0;
-                border-top: 1px solid $border-gray;
-                border-bottom: 1px solid $border-gray;
+
                 p {
                     color: $gray-text;
+                }
+            }
+            .like-comment-buttons {
+                border-top: 1px solid $border-gray;
+                border-bottom: 1px solid $border-gray;
+                display: flex;
+                button {
+                    background-color: transparent;
+                    flex: 1;
+                    border: 1px solid transparent;
+                    border-radius: 5px;
+                    color: $gray-text;
+                    padding: 0.5em 0;
+                    margin: 3px;
+                    &:hover {
+                        background-color: $gray;
+                        cursor: pointer;
+                    }
+                }
+            }
+            .comments {
+                margin: 1em 0;
+                figure {
+                    @include flex(row, flex-start, center);
+                    flex-wrap: wrap;
+                    img {
+                        @extend .placeholder-image;
+                        width: 35px;
+                        height: 35px;
+                    }
+                    figcaption {
+                        padding: 0.8em;
+                        background-color: $gray;
+                        border: 1px solid transparent;
+                        border-radius: 25px;
+                        margin-left: 10px;
+                        .username {
+                            font-weight: bold;
+                            color: black;
+                            margin-bottom: 10px;
+                        }
+                    }
+                    .timestamp {
+                        width: 100%;
+                        color: $gray-text;
+                        font-size: 0.8rem;
+                        text-indent: 50px;
+                        margin: 6px 0 12px 0;
+                    }
+                }
+            }
+            form {
+                @include flex(row, flex-start, center);
+                img {
+                    @extend .placeholder-image;
+                }
+                input {
+                    padding: 0.6em;
+                    border: 1px solid transparent;
+                    border-radius: 25px;
+                    background-color: $gray;
+                    margin-left: 10px;
+                    flex: 1;
+                }
+                button {
+                    display: none;
                 }
             }
         }
