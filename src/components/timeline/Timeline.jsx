@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import headers from '../../services/headers';
 import Header from './Header';
-import CreatePost from './CreatePost';
 import PostList from './PostList';
 
 export default function Timeline({ match }) {
