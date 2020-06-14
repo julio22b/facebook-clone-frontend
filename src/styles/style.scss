@@ -285,7 +285,8 @@ body {
                 border-bottom: 1px solid $border-gray;
                 display: flex;
                 position: relative;
-                button {
+                button,
+                & > div {
                     background-color: transparent;
                     flex: 1;
                     border: 1px solid transparent;

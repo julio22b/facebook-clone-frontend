@@ -63,10 +63,10 @@ export default function Post({
                 </p>
             </div>
             <div className="like-comment-buttons">
-                <button className="like" id="like-btn">
-                    <Reactions />
+                <div className="like" id="like-btn">
+                    <Reactions post_id={post_id} user_id={currentUser} />
                     <i></i>Like
-                </button>
+                </div>
                 <button className="comment" onClick={focusCommentInput}>
                     <i></i>Comment
                 </button>

@@ -40,28 +40,28 @@
         opacity: 0;
     }
     .reaction-like {
-        transition: transform 0.2s ease, opacity 1s ease-out;
-        transform: translateY(45px);
+        transition: transform 0.4s ease, opacity 1s ease-out;
+        transform: translateY(55px);
     }
     .reaction-love {
         transition: transform 0.4s ease, opacity 1s ease-out;
-        transform: translateY(40px);
+        transform: translateY(50px);
     }
     .reaction-haha {
         transition: transform 0.6s ease, opacity 1s ease-out;
-        transform: translateY(35px);
+        transform: translateY(45px);
     }
     .reaction-wow {
         transition: transform 0.8s ease, opacity 1s ease-out;
-        transform: translateY(30px);
+        transform: translateY(40px);
     }
     .reaction-sad {
         transition: transform 1s ease, opacity 1s ease-out;
-        transform: translateY(25px);
+        transform: translateY(35px);
     }
     .reaction-angry {
         transition: transform 1s ease, opacity 1s ease-out;
-        transform: translateY(20px);
+        transform: translateY(30px);
     }
 }
 

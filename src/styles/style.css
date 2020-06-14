@@ -59,12 +59,12 @@
 }
 
 .box .reaction-like {
-  -webkit-transition: opacity 1s ease-out, -webkit-transform 0.2s ease;
-  transition: opacity 1s ease-out, -webkit-transform 0.2s ease;
-  transition: transform 0.2s ease, opacity 1s ease-out;
-  transition: transform 0.2s ease, opacity 1s ease-out, -webkit-transform 0.2s ease;
-  -webkit-transform: translateY(45px);
-          transform: translateY(45px);
+  -webkit-transition: opacity 1s ease-out, -webkit-transform 0.4s ease;
+  transition: opacity 1s ease-out, -webkit-transform 0.4s ease;
+  transition: transform 0.4s ease, opacity 1s ease-out;
+  transition: transform 0.4s ease, opacity 1s ease-out, -webkit-transform 0.4s ease;
+  -webkit-transform: translateY(55px);
+          transform: translateY(55px);
 }
 
 .box .reaction-love {
@@ -72,8 +72,8 @@
   transition: opacity 1s ease-out, -webkit-transform 0.4s ease;
   transition: transform 0.4s ease, opacity 1s ease-out;
   transition: transform 0.4s ease, opacity 1s ease-out, -webkit-transform 0.4s ease;
-  -webkit-transform: translateY(40px);
-          transform: translateY(40px);
+  -webkit-transform: translateY(50px);
+          transform: translateY(50px);
 }
 
 .box .reaction-haha {
@@ -81,8 +81,8 @@
   transition: opacity 1s ease-out, -webkit-transform 0.6s ease;
   transition: transform 0.6s ease, opacity 1s ease-out;
   transition: transform 0.6s ease, opacity 1s ease-out, -webkit-transform 0.6s ease;
-  -webkit-transform: translateY(35px);
-          transform: translateY(35px);
+  -webkit-transform: translateY(45px);
+          transform: translateY(45px);
 }
 
 .box .reaction-wow {
@@ -90,8 +90,8 @@
   transition: opacity 1s ease-out, -webkit-transform 0.8s ease;
   transition: transform 0.8s ease, opacity 1s ease-out;
   transition: transform 0.8s ease, opacity 1s ease-out, -webkit-transform 0.8s ease;
-  -webkit-transform: translateY(30px);
-          transform: translateY(30px);
+  -webkit-transform: translateY(40px);
+          transform: translateY(40px);
 }
 
 .box .reaction-sad {
@@ -99,8 +99,8 @@
   transition: opacity 1s ease-out, -webkit-transform 1s ease;
   transition: transform 1s ease, opacity 1s ease-out;
   transition: transform 1s ease, opacity 1s ease-out, -webkit-transform 1s ease;
-  -webkit-transform: translateY(25px);
-          transform: translateY(25px);
+  -webkit-transform: translateY(35px);
+          transform: translateY(35px);
 }
 
 .box .reaction-angry {
@@ -108,8 +108,8 @@
   transition: opacity 1s ease-out, -webkit-transform 1s ease;
   transition: transform 1s ease, opacity 1s ease-out;
   transition: transform 1s ease, opacity 1s ease-out, -webkit-transform 1s ease;
-  -webkit-transform: translateY(20px);
-          transform: translateY(20px);
+  -webkit-transform: translateY(30px);
+          transform: translateY(30px);
 }
 
 #like-btn:hover .box button {
@@ -527,7 +527,8 @@ body {
   position: relative;
 }
 
-.posts .post-list article .like-comment-buttons button {
+.posts .post-list article .like-comment-buttons button,
+.posts .post-list article .like-comment-buttons > div {
   background-color: transparent;
   -webkit-box-flex: 1;
       -ms-flex: 1;
@@ -553,7 +554,8 @@ body {
           align-items: center;
 }
 
-.posts .post-list article .like-comment-buttons button i {
+.posts .post-list article .like-comment-buttons button i,
+.posts .post-list article .like-comment-buttons > div i {
   width: 28px;
   height: 28px;
   display: inline-block;
