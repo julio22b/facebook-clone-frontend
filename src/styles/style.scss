@@ -201,12 +201,13 @@ body {
         box-shadow: 0 0 3px $border-gray;
         border-radius: 5px;
         background-color: white;
+        position: relative;
         div {
             display: flex;
             flex-wrap: wrap;
             padding-bottom: 1em;
             border-bottom: 1px solid $border-gray;
-            img {
+            .profile-image {
                 @extend .placeholder-image;
             }
             .text-input {
@@ -220,10 +221,32 @@ body {
                 margin-left: 10px;
                 resize: vertical;
             }
-            .file-input {
-                display: block;
-                padding: 1em 0;
+        }
+        .image-preview {
+            max-width: 100%;
+            display: block;
+            margin: 10px auto;
+        }
+        .file-input {
+            display: block;
+            padding: 0.6em 0;
+            @include flex(row, center);
+            color: $gray-text;
+            font-size: 1.1rem;
+            margin: 0 auto;
+            width: 50%;
+            border-radius: 5px;
+            &:hover {
+                background-color: $gray;
+            }
+            img {
+                margin-right: 10px;
+            }
+            input {
                 cursor: pointer;
+                position: absolute;
+                width: 100%;
+                opacity: 0;
             }
         }
         button {

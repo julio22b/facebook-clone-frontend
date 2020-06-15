@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import authHeader from '../../services/authHeader';
+import addPhoto from '../../images/add-photo.png';
 
 export default function CreatePost({ username, profile_picture, user_id, setPosts }) {
     const [content, setContent] = useState('');
@@ -38,17 +39,19 @@ export default function CreatePost({ username, profile_picture, user_id, setPost
     return (
         <form className="create-post" onSubmit={(e) => postCreate(e)}>
             <div>
-                <img src="" alt="" />
-                <textarea
+                <img src="" alt="" className="profile-image" />
+                <input
                     name="content"
-                    required
                     onChange={(e) => setContent(e.target.value)}
                     placeholder={`What's on your mind, ${username}?`}
                     className="text-input"
-                    rows="1"
-                ></textarea>
+                ></input>{' '}
+                {/* THS NEEDS TO INCREASE IN HEIGHT AS THE USER TYPES */}
             </div>
+            <img src={imagePreview} alt="" className="image-preview" />
             <label htmlFor="image" className="file-input">
+                <img src={addPhoto} alt="" />
+                Add a photo
                 <input
                     type="file"
                     name="image"
@@ -56,7 +59,6 @@ export default function CreatePost({ username, profile_picture, user_id, setPost
                     onChange={(e) => handleFile(e)}
                 />
             </label>
-            <img src={imagePreview} alt="" />
             <button>Post</button>
         </form>
     );

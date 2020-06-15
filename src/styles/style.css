@@ -378,7 +378,7 @@ body {
   padding: 1em;
 }
 
-.placeholder-image, .posts .create-post div img, .posts .post-list article .user-info img, .posts .post-list article .comments figure img, .posts .post-list article form img {
+.placeholder-image, .posts .create-post div .profile-image, .posts .post-list article .user-info img, .posts .post-list article .comments figure img, .posts .post-list article form img {
   border: 1px solid black;
   border-radius: 50%;
   background-color: black;
@@ -397,6 +397,7 @@ body {
           box-shadow: 0 0 3px #b3b5b9;
   border-radius: 5px;
   background-color: white;
+  position: relative;
 }
 
 .posts .create-post div {
@@ -421,10 +422,48 @@ body {
   resize: vertical;
 }
 
-.posts .create-post div .file-input {
+.posts .create-post .image-preview {
+  max-width: 100%;
   display: block;
-  padding: 1em 0;
+  margin: 10px auto;
+}
+
+.posts .create-post .file-input {
+  display: block;
+  padding: 0.6em 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  color: #5f666f;
+  font-size: 1.1rem;
+  margin: 0 auto;
+  width: 50%;
+  border-radius: 5px;
+}
+
+.posts .create-post .file-input:hover {
+  background-color: #f0f2f5;
+}
+
+.posts .create-post .file-input img {
+  margin-right: 10px;
+}
+
+.posts .create-post .file-input input {
   cursor: pointer;
+  position: absolute;
+  width: 100%;
+  opacity: 0;
 }
 
 .posts .create-post button {
