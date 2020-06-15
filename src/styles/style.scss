@@ -275,7 +275,25 @@ body {
             .reactions-comment-count {
                 @include flex();
                 padding: 0.5em 0;
-
+                .reactions {
+                    list-style: none;
+                    display: flex;
+                    align-items: center;
+                    li img {
+                        width: 20px;
+                        height: 20px;
+                    }
+                    li {
+                        margin-left: -3px;
+                    }
+                    li:first-child {
+                        margin-left: 0;
+                    }
+                    li:last-child {
+                        margin-left: 10px;
+                        color: $gray-text;
+                    }
+                }
                 p {
                     color: $gray-text;
                 }

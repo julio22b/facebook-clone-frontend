@@ -2,6 +2,12 @@ import React, { useState, useRef } from 'react';
 import headers from '../../services/headers';
 import PostComments from './PostComments';
 import Reactions from './Reactions';
+import like from '../../images/like-reaction.png';
+import love from '../../images/love.png';
+import haha from '../../images/haha.png';
+import wow from '../../images/wow.png';
+import sad from '../../images/sad.png';
+import angry from '../../images/angry.png';
 
 export default function Post({
     post_id,
@@ -17,7 +23,7 @@ export default function Post({
     const [postComments, setPostComments] = useState(comments);
     const [commentsCount, setCommentCount] = useState(comments.length || 0);
     const [comment, setComment] = useState('');
-    const [showReactionsBox, setshowReactionsBox] = useState(false);
+    const [postReactions, setPostReactions] = useState(reactions);
 
     const createComment = async (e) => {
         e.preventDefault();
@@ -38,11 +44,27 @@ export default function Post({
         console.log(data);
     };
 
+    const likes = postReactions.filter((reaction) => reaction.type === 'Like').length;
+    const loves = postReactions.filter((reaction) => reaction.type === 'Love').length;
+    const hahas = postReactions.filter((reaction) => reaction.type === 'Haha').length;
+    const wows = postReactions.filter((reaction) => reaction.type === 'Wow').length;
+    const sads = postReactions.filter((reaction) => reaction.type === 'Sad').length;
+    const angrys = postReactions.filter((reaction) => reaction.type === 'Angry').length;
+    const reactionCounts = [
+        { type: likes, img: like, key: 1 },
+        { type: loves, img: love, key: 2 },
+        { type: hahas, img: haha, key: 3 },
+        { type: wows, img: wow, key: 4 },
+        { type: sads, img: sad, key: 5 },
+        { type: angrys, img: angry, key: 6 },
+    ];
+
     const commentInput = useRef();
     const focusCommentInput = () => {
         commentInput.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
         commentInput.current.focus();
     };
+
     return (
         <article>
             <figure className="user-info">
@@ -57,14 +79,28 @@ export default function Post({
                 <figcaption>{content}</figcaption>
             </figure>
             <div className="reactions-comment-count">
-                <p className="reactions">reactions here</p>
+                <ul className="reactions">
+                    {reactionCounts.map(
+                        (reaction) =>
+                            !!reaction.type && (
+                                <li key={reaction.key}>
+                                    <img src={reaction.img} alt="" />
+                                </li>
+                            ),
+                    )}
+                    <li>{postReactions.length > 0 ? postReactions.length : ''}</li>
+                </ul>
                 <p className="comment-count">
                     {commentsCount === 1 ? `${commentsCount} comment` : `${commentsCount} comments`}
                 </p>
             </div>
             <div className="like-comment-buttons">
                 <div className="like" id="like-btn">
-                    <Reactions post_id={post_id} user_id={currentUser} />
+                    <Reactions
+                        post_id={post_id}
+                        user_id={currentUser}
+                        setPostReactions={setPostReactions}
+                    />
                     <i></i>Like
                 </div>
                 <button className="comment" onClick={focusCommentInput}>

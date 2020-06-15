@@ -7,7 +7,7 @@ import sad from '../../images/sad.png';
 import angry from '../../images/angry.png';
 import headers from '../../services/headers';
 
-export default function Reactions({ post_id, user_id }) {
+export default function Reactions({ post_id, user_id, setPostReactions }) {
     const react = async (type) => {
         const reaction = {
             reaction: type,
@@ -20,7 +20,7 @@ export default function Reactions({ post_id, user_id }) {
             body: JSON.stringify(reaction),
         });
         const submittedReaction = await response.json();
-        console.log(submittedReaction);
+        setPostReactions((postReactions) => postReactions.concat(submittedReaction));
     };
 
     return (
