@@ -6,6 +6,7 @@ export default function CreatePost({ username, profile_picture, user_id, setPost
     const [content, setContent] = useState('');
     const [image, setImage] = useState('');
     const [imagePreview, setImagePreview] = useState('');
+    const [errors, setErrors] = useState([]);
 
     const postCreate = async (e) => {
         e.preventDefault();
@@ -14,16 +15,24 @@ export default function CreatePost({ username, profile_picture, user_id, setPost
             image,
             user_id,
         };
-        const response = await fetch('http://localhost:4000/posts/create', {
-            method: 'post',
-            mode: 'cors',
-            headers: { 'Content-type': 'application/json', Authorization: authHeader() },
-            body: JSON.stringify(postData),
-        });
-        const data = await response.json();
-        setPosts((posts) => posts.concat(data.post));
-        setImage('');
-        setContent('');
+        try {
+            const response = await fetch('http://localhost:4000/posts/create', {
+                method: 'post',
+                mode: 'cors',
+                headers: { 'Content-type': 'application/json', Authorization: authHeader() },
+                body: JSON.stringify(postData),
+            });
+            const data = await response.json();
+            if (data.errors) {
+                setErrors(data.errors);
+                return;
+            }
+            setPosts((posts) => posts.concat(data.post));
+            setImage('');
+            setContent('');
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     const handleFile = (e) => {
@@ -59,6 +68,11 @@ export default function CreatePost({ username, profile_picture, user_id, setPost
                     onChange={(e) => handleFile(e)}
                 />
             </label>
+            <ul className="errors">
+                {errors.map((error) => (
+                    <li key={error.msg}>{error.msg}</li>
+                ))}
+            </ul>
             <button>Post</button>
         </form>
     );

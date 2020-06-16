@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import headers from '../../services/headers';
-import Header from './Header';
-import PostList from './PostList';
-import FindPeople from '../friends-side-bar/FindPeople';
+import Header from '../timeline/Header';
+import Intro from './Intro';
 
-export default function Timeline({ match }) {
+export default function Profile({ match }) {
     const [user, setUser] = useState({});
 
     useEffect(() => {
@@ -23,17 +22,12 @@ export default function Timeline({ match }) {
         <>
             <Header
                 username={user.first_name}
-                profile_picture={user.profile_picture}
                 user_id={user._id}
+                profile_picture={user.profile_picture}
             />
-            <div className="container">
-                <section className="posts">
-                    <PostList currentUser={user} />
-                </section>
-                <section className="right-col">
-                    <FindPeople currentUser={user} />
-                </section>
-            </div>
+            <section className="profile">
+                <Intro name={`${user.first_name} ${user.last_name}`} bio={user.bio} />
+            </section>
         </>
     );
 }
