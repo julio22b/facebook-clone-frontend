@@ -1,7 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
+import EditProfileForm from './EditProfileForm';
 import defaultPicture from '../../images/no-profile-picture.png';
 
-export default function Intro({ name, bio, cover_photo, profile_picture }) {
+export default function Intro({
+    name,
+    bio,
+    cover_photo,
+    profile_picture,
+    notLoggedInUser,
+    currentUser,
+}) {
+    const [showEditProfileForm, setShowEditProfileForm] = useState(false);
+    const showForm = () => {
+        setShowEditProfileForm(!showEditProfileForm);
+    };
     return (
         <section className="intro">
             <div className="user-images">
@@ -11,7 +23,14 @@ export default function Intro({ name, bio, cover_photo, profile_picture }) {
             <article>
                 <h1>{name}</h1>
                 <p>{bio}</p>
-                <button type="button">Edit profile</button>
+                {notLoggedInUser !== currentUser ? (
+                    ''
+                ) : (
+                    <>
+                        <button type="button">Edit profile</button>
+                        <EditProfileForm />
+                    </>
+                )}
             </article>
         </section>
     );

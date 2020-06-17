@@ -5,7 +5,7 @@ import Intro from './Intro';
 import UserPosts from './UserPosts';
 import Friends from './Friends';
 
-export default function Profile({ match, currentUser }) {
+export default function Profile({ match, currentUser, logOut }) {
     const [user, setUser] = useState({});
 
     useEffect(() => {
@@ -16,7 +16,6 @@ export default function Profile({ match, currentUser }) {
             });
             const userData = await response.json();
             setUser(userData);
-            console.log(userData);
         };
         getUser();
     }, [match.params.id]);
@@ -25,11 +24,21 @@ export default function Profile({ match, currentUser }) {
         <>
             <Header
                 username={currentUser.first_name}
+                full_name={`${currentUser.first_name} ${currentUser.last_name}`}
                 user_id={currentUser._id}
                 profile_picture={currentUser.profile_picture}
+                friend_requests={user.friend_requests}
+                logOut={logOut}
             />
             <section className="profile">
-                <Intro name={`${user.first_name} ${user.last_name}`} bio={user.bio} />
+                <Intro
+                    name={`${user.first_name} ${user.last_name}`}
+                    bio={user.bio}
+                    cover_photo={user.cover_photo}
+                    profile_picture={user.profile_picture}
+                    notLoggedInUser={match.params.id}
+                    currentUser={currentUser._id}
+                />
                 <div className="cols-wrapper">
                     <Friends friends={user.friends} />
                     <UserPosts user_id={user._id} profile_picture={user.profile_picture} />

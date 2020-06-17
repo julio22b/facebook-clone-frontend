@@ -107,7 +107,6 @@ body {
     align-items: space-around;
     background: linear-gradient(white, #d3d8e8);
     min-height: 89vh;
-    margin-top: 1em;
     .sign-up-form {
         padding: 1em;
         display: flex;
@@ -206,17 +205,33 @@ body {
 }
 
 .home-header {
-    box-shadow: 0 1px 4px rgb(216, 216, 216);
-    padding: 0.8em;
+    box-shadow: 0 1px 4px rgb(225, 225, 225);
+    padding: 0.6em;
     @include flex(row, space-between);
     background-color: white;
     position: sticky;
     top: 0;
     z-index: 10;
+    div:first-of-type {
+        @include flex(row, space-between, center);
+        width: 300px;
+        input {
+            padding: 0.7em 1em;
+            border: none;
+            border-radius: 25px;
+            background-color: $gray;
+            flex: 1;
+            margin-left: 10px;
+            font-size: 1.05rem;
+        }
+    }
     a {
         text-decoration: none;
         border-radius: 25px;
         padding: 0.3em 0.5em;
+        margin-right: 10px;
+        display: flex;
+        align-items: center;
         &:hover {
             background-color: $gray;
         }
@@ -234,7 +249,129 @@ body {
         li {
             font-weight: bold;
             color: black;
+            margin-right: 10px;
+            position: relative;
+            &:hover span {
+                opacity: 1;
+            }
+            span {
+                position: absolute;
+                bottom: -45px;
+                background-color: #333;
+                color: white;
+                font-weight: normal;
+                opacity: 0;
+                transition: opacity 150ms ease-in;
+                padding: 10px;
+                border-radius: 10px;
+                font-size: 0.8rem;
+                letter-spacing: 1px;
+            }
         }
+        li i {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+        }
+        .notifications {
+            padding: 10px;
+            border-radius: 50%;
+            background-color: $gray;
+            cursor: pointer;
+            @include flex(row, center, center);
+            &:hover {
+                background-color: rgb(225, 225, 225);
+            }
+            i {
+                background: url('../images/bell.png') center no-repeat;
+                background-size: contain;
+            }
+        }
+        .account {
+            @extend .notifications;
+            i {
+                background: url('../images/arrow.png') center no-repeat;
+                background-size: contain;
+                transform: rotate(90deg);
+            }
+        }
+    }
+    .account-modal.active {
+        display: block;
+    }
+    .account-modal {
+        position: absolute;
+        right: 20px;
+        bottom: -240px;
+        background: white;
+        box-shadow: 0 0 3px $border-gray;
+        padding: 0.4em;
+        display: none;
+        a {
+            border-radius: 10px;
+            margin-right: 0;
+        }
+        .border {
+            border-bottom: 1px solid $border-gray;
+            margin: 15px 0;
+        }
+        figure {
+            display: flex;
+            border-radius: 3px;
+            padding: 0.4em 0;
+            align-items: center;
+            cursor: pointer;
+            &:hover {
+                background-color: $gray;
+            }
+            img {
+                @extend .placeholder-image;
+                width: 60px;
+                height: 60px;
+                margin-right: 10px;
+            }
+            figcaption {
+                flex: 1;
+                p:first-child {
+                    font-weight: bold;
+                    font-size: 1.2rem;
+                    color: black;
+                    margin-bottom: 5px;
+                }
+                p:last-child {
+                    color: $gray-text;
+                }
+            }
+        }
+        div {
+            display: flex;
+            p {
+                flex: 1;
+            }
+        }
+        button {
+            background: none;
+            border: none;
+            width: 100%;
+            cursor: pointer;
+        }
+        div.option {
+            padding: 0.4em;
+            border-radius: 5px;
+            cursor: pointer;
+            &:hover {
+                background-color: $gray;
+            }
+        }
+    }
+    .notifications-modal.active {
+        display: block;
+    }
+    .notifications-modal {
+        @extend .account-modal;
+        width: 50px;
+        height: 50px;
+        border: 2px solid black;
     }
 }
 

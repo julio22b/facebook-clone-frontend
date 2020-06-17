@@ -6,13 +6,13 @@ export default function Friends({ friends }) {
         friends || [
             { first_name: 'mario', last_name: 'mario' },
             { first_name: 'algo', last_name: 'algo' },
-            { first_name: 'yeah', last_name: 'yeah' },
-            { first_name: 'yeah', last_name: 'yeah' },
-            { first_name: 'yeah', last_name: 'yeah' },
-            { first_name: 'yeah', last_name: 'yeah' },
-            { first_name: 'yeah', last_name: 'yeah' },
-            { first_name: 'alejandro', last_name: 'yeah' },
+            { first_name: 'juan', last_name: 'yeah' },
+            { first_name: 'yeah', last_name: 'ramirez' },
             { first_name: 'yeah', last_name: 'bermudez' },
+            { first_name: 'andrea', last_name: 'yeah' },
+            { first_name: 'yeah', last_name: 'azul' },
+            { first_name: 'alejandro', last_name: 'yeah' },
+            { first_name: 'yeah', last_name: 'mo' },
         ],
     );
 
@@ -24,7 +24,7 @@ export default function Friends({ friends }) {
             <p>{userFriends.length} friends</p>
             <div>
                 {userFriends.map((friend) => (
-                    <figure>
+                    <figure key={`${friend.first_name} ${friend.last_name}`}>
                         <img src={friend.profile_picture || defaultPicture} alt="" />
                         <figcaption>{`${friend.first_name} ${friend.last_name}`}</figcaption>
                     </figure>

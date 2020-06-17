@@ -10,28 +10,41 @@ function App() {
     const [loggedInUser, setLoggedInUser] = useState({});
 
     useEffect(() => {
-        const loggedInUserID = JSON.parse(localStorage.getItem('user')).user_id;
+        const loggedInUserID = JSON.parse(localStorage.getItem('user'));
         const getUserInfo = async () => {
-            const response = await fetch(`http://localhost:4000/users/${loggedInUserID}`, {
+            const response = await fetch(`http://localhost:4000/users/${loggedInUserID.user_id}`, {
                 mode: 'cors',
                 headers: headers(),
             });
             const user = await response.json();
             setLoggedInUser(user);
         };
-
-        getUserInfo();
+        if (loggedInUserID) {
+            getUserInfo();
+        }
     }, []);
+
+    const logOut = () => {
+        localStorage.removeItem('user');
+        setLoggedInUser({});
+    };
+
     return (
         <>
             <Router>
                 <Switch>
                     <Route path="/users/log-in" exact component={LogInPage} />
-                    <Route path="/users/:id/timeline" exact component={Timeline} />
+                    <Route
+                        path="/users/:id/timeline"
+                        exact
+                        render={(props) => <Timeline {...props} logOut={logOut} />}
+                    />
                     <Route
                         path="/users/:id/profile"
                         exact
-                        render={(props) => <Profile {...props} currentUser={loggedInUser} />}
+                        render={(props) => (
+                            <Profile {...props} currentUser={loggedInUser} logOut={logOut} />
+                        )}
                     />
                 </Switch>
             </Router>
