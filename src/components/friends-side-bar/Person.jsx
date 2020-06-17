@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import headers from '../../services/headers';
+import defaultPicture from '../../images/no-profile-picture.png';
 
 export default function Person({
     current_user_id,
@@ -24,7 +25,7 @@ export default function Person({
 
     return (
         <article>
-            <img src="profile_picture" alt="" />
+            <img src={profile_picture || defaultPicture} alt="" />
             <div>
                 <p>{`${first_name} ${last_name}`}</p>
                 <button type="button" onClick={sendFriendRequest}>

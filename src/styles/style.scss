@@ -12,6 +12,7 @@ $red: rgb(211, 72, 72);
 }
 
 @import './reactions';
+@import './profile-page';
 
 * {
     padding: 0;
@@ -19,9 +20,33 @@ $red: rgb(211, 72, 72);
     box-sizing: border-box;
     color: #333;
 }
+a {
+    text-decoration: none;
+}
 body {
     background-color: $gray;
     scroll-behavior: smooth;
+}
+
+.placeholder-image {
+    border-radius: 50%;
+    background-color: $gray;
+    height: 45px;
+    width: 45px;
+}
+
+.gray-btn {
+    background-color: $gray;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 0.6em;
+    color: black;
+    font-weight: bold;
+    font-size: 1.1rem;
+    &:hover {
+        background-color: rgb(231, 231, 231);
+    }
 }
 
 .log-in-page-header {
@@ -182,9 +207,12 @@ body {
 
 .home-header {
     box-shadow: 0 1px 4px rgb(216, 216, 216);
-    padding: 1em;
+    padding: 0.8em;
     @include flex(row, space-between);
     background-color: white;
+    position: sticky;
+    top: 0;
+    z-index: 10;
     a {
         text-decoration: none;
         border-radius: 25px;
@@ -208,14 +236,6 @@ body {
             color: black;
         }
     }
-}
-
-.placeholder-image {
-    border: 1px solid black;
-    border-radius: 50%;
-    background-color: black;
-    height: 45px;
-    width: 45px;
 }
 
 .container {
@@ -403,6 +423,8 @@ body {
                         border: 1px solid transparent;
                         border-radius: 25px;
                         margin-left: 10px;
+                        flex: 1;
+                        width: max-content;
                         .username {
                             font-weight: bold;
                             color: black;

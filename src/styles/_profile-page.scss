@@ -1,0 +1,96 @@
+.intro {
+    background-color: white;
+    box-shadow: 0 0 6px $border-gray;
+    .user-images {
+        margin-top: -10px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        .cover-photo {
+            width: 900px;
+            height: 350px;
+            border-radius: 10px;
+            background: rgb(163, 163, 170);
+            background: linear-gradient(
+                0deg,
+                rgba(163, 163, 170, 1) 0%,
+                rgba(240, 242, 245, 1) 35%
+            );
+        }
+        .profile-picture {
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: $gray;
+            border: 5px solid white;
+            border-radius: 50%;
+            width: 180px;
+        }
+    }
+    article {
+        margin: 0 auto;
+        padding: 1.5em 0;
+        width: 900px;
+        @include flex(column, center, flex-end);
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            width: 100%;
+        }
+        button {
+            @extend .gray-btn;
+        }
+    }
+}
+
+.cols-wrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    .posts {
+        margin-left: 15px;
+        margin-right: 0;
+    }
+    .user-friends {
+        background-color: white;
+        box-shadow: 0 0 3px $border-gray;
+        margin-top: 4em;
+        padding: 1em;
+        width: 350px;
+        h2 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            button {
+                @extend .gray-btn;
+                background-color: white !important;
+                color: #1770e6 !important;
+                font-weight: normal !important;
+                &:hover {
+                    background-color: $gray !important;
+                }
+            }
+        }
+        & > div {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12px;
+            margin-top: 1em;
+            figure {
+                @include flex(column, flex-start, center);
+                img {
+                    border-radius: 5px;
+                    border: 1px solid black;
+                    width: 100%;
+                }
+                figcaption {
+                    margin-top: 0.5em;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+}

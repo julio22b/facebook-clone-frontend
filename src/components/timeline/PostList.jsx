@@ -15,7 +15,6 @@ export default function PostList({ currentUser }) {
         getPosts();
     }, []);
 
-    console.log(posts);
     // NEED TO SORT POSTS!!!
     return (
         <>
@@ -31,6 +30,7 @@ export default function PostList({ currentUser }) {
                         key={post._id}
                         post_id={post._id}
                         user={`${post.user.first_name} ${post.user.last_name}`}
+                        user_id={post.user._id}
                         profile_picture={post.user.profile_picture}
                         content={post.content}
                         image={post.image}

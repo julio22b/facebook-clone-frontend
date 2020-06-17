@@ -8,10 +8,13 @@ import haha from '../../images/haha.png';
 import wow from '../../images/wow.png';
 import sad from '../../images/sad.png';
 import angry from '../../images/angry.png';
+import defaultPicture from '../../images/no-profile-picture.png';
+import { Link } from 'react-router-dom';
 
 export default function Post({
     post_id,
     user,
+    user_id,
     profile_picture,
     content,
     image,
@@ -67,15 +70,17 @@ export default function Post({
 
     return (
         <article>
-            <figure className="user-info">
-                <img src="" alt="" />
-                <figcaption>
-                    <p className="username">{user}</p>
-                    <p className="post-date">{timestamp}</p>
-                </figcaption>
-            </figure>
+            <Link to={`/users/${user_id}/profile`}>
+                <figure className="user-info">
+                    <img src={profile_picture || defaultPicture} alt="" />
+                    <figcaption>
+                        <p className="username">{user}</p>
+                        <p className="post-date">{timestamp}</p>
+                    </figcaption>
+                </figure>
+            </Link>
             <figure className="post-content">
-                <img src="" alt="" />
+                <img src={image || ''} alt="" />
                 <figcaption>{content}</figcaption>
             </figure>
             <div className="reactions-comment-count">
@@ -109,7 +114,7 @@ export default function Post({
             </div>
             <PostComments comments={postComments} />
             <form onSubmit={(e) => createComment(e)}>
-                <img src="" alt="" />
+                <img src={profile_picture || defaultPicture} alt="" />
                 <input
                     type="text"
                     required

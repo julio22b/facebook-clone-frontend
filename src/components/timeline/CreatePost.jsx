@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import authHeader from '../../services/authHeader';
 import addPhoto from '../../images/add-photo.png';
+import defaultPicture from '../../images/no-profile-picture.png';
 
 export default function CreatePost({ username, profile_picture, user_id, setPosts }) {
     const [content, setContent] = useState('');
@@ -48,7 +49,7 @@ export default function CreatePost({ username, profile_picture, user_id, setPost
     return (
         <form className="create-post" onSubmit={(e) => postCreate(e)}>
             <div>
-                <img src="" alt="" className="profile-image" />
+                <img src={profile_picture || defaultPicture} alt="" className="profile-image" />
                 <input
                     name="content"
                     onChange={(e) => setContent(e.target.value)}
