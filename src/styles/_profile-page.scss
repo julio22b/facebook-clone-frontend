@@ -35,6 +35,12 @@
         padding: 1.5em 0;
         width: 900px;
         @include flex(column, center, flex-end);
+        & > p:first-of-type {
+            text-align: center;
+            width: 100%;
+            font-size: 1.1rem;
+            margin: 1em 0;
+        }
         h1 {
             font-size: 2.5rem;
             text-align: center;
@@ -42,6 +48,106 @@
         }
         button {
             @extend .gray-btn;
+        }
+    }
+    .edit-form.active {
+        display: block;
+    }
+    .edit-form {
+        display: none;
+        position: absolute;
+        top: 20%;
+        left: 50%;
+        transform: translateX(-50%);
+        background: white;
+        box-shadow: 0 0 500px 300px $border-gray;
+        width: 700px;
+        z-index: 100;
+        .errors {
+            padding: 1em;
+            font-size: 1.1rem;
+        }
+        h2 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid $border-gray;
+            padding: 0.8em;
+            button {
+                border-radius: 50%;
+                font-weight: normal;
+                width: 40px;
+                background-color: $gray;
+                color: black;
+                margin: 0;
+                &:hover {
+                    background-color: rgb(231, 231, 235);
+                }
+            }
+        }
+        & > div {
+            padding: 1em;
+            @include flex(column space-between, center);
+            flex-wrap: wrap;
+            label {
+                font-weight: bold;
+                width: 100%;
+                font-size: 1.2rem;
+                margin-bottom: 1em;
+            }
+            input[type='text'],
+            textarea {
+                border-radius: 25px;
+                border: none;
+                background-color: $gray;
+                padding: 1em;
+                outline: none;
+                font-size: 1.2rem;
+                width: max-content;
+                resize: none;
+            }
+            div {
+                @include flex(row, center, center);
+                width: 100%;
+                position: relative;
+                color: $blue;
+                &:first-child {
+                    padding: 1em 0;
+                }
+                .profile-picture-preview {
+                    width: 150px;
+                    height: 150px;
+                    border: none;
+                    border-radius: 50%;
+                }
+                .cover-photo-preview {
+                    width: 450px;
+                    height: 220px;
+                    border: none;
+                    border-radius: 5px;
+                    background-color: $gray;
+                }
+                input[type='file'] {
+                    width: 30px;
+                    opacity: 0;
+                    position: absolute;
+                    right: 0;
+                    cursor: pointer;
+                    &:hover {
+                        background-color: $gray;
+                    }
+                }
+            }
+        }
+        button {
+            width: 96%;
+            margin: 0.8em;
+            color: $blue;
+            background-color: #e7f3ff;
+            &:hover {
+                transform: scale(0.987);
+                background-color: #c4d7e9bb;
+            }
         }
     }
 }
@@ -83,7 +189,6 @@
                 @include flex(column, flex-start, center);
                 img {
                     border-radius: 5px;
-                    border: 1px solid black;
                     width: 100%;
                 }
                 figcaption {

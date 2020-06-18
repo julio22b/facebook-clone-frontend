@@ -211,7 +211,7 @@ body {
     background-color: white;
     position: sticky;
     top: 0;
-    z-index: 10;
+    z-index: 200;
     div:first-of-type {
         @include flex(row, space-between, center);
         width: 300px;
@@ -589,6 +589,7 @@ body {
                     background-color: $gray;
                     margin-left: 10px;
                     flex: 1;
+                    outline: none;
                 }
                 button {
                     display: none;

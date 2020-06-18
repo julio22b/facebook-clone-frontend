@@ -190,10 +190,170 @@
           align-items: flex-end;
 }
 
+.intro article > p:first-of-type {
+  text-align: center;
+  width: 100%;
+  font-size: 1.1rem;
+  margin: 1em 0;
+}
+
 .intro article h1 {
   font-size: 2.5rem;
   text-align: center;
   width: 100%;
+}
+
+.intro .edit-form.active {
+  display: block;
+}
+
+.intro .edit-form {
+  display: none;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  background: white;
+  -webkit-box-shadow: 0 0 500px 300px #b3b5b9;
+          box-shadow: 0 0 500px 300px #b3b5b9;
+  width: 700px;
+  z-index: 100;
+}
+
+.intro .edit-form .errors {
+  padding: 1em;
+  font-size: 1.1rem;
+}
+
+.intro .edit-form h2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-bottom: 1px solid #b3b5b9;
+  padding: 0.8em;
+}
+
+.intro .edit-form h2 button {
+  border-radius: 50%;
+  font-weight: normal;
+  width: 40px;
+  background-color: #f0f2f5;
+  color: black;
+  margin: 0;
+}
+
+.intro .edit-form h2 button:hover {
+  background-color: #e7e7eb;
+}
+
+.intro .edit-form > div {
+  padding: 1em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column space-between;
+          flex-direction: column space-between;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.intro .edit-form > div label {
+  font-weight: bold;
+  width: 100%;
+  font-size: 1.2rem;
+  margin-bottom: 1em;
+}
+
+.intro .edit-form > div input[type='text'],
+.intro .edit-form > div textarea {
+  border-radius: 25px;
+  border: none;
+  background-color: #f0f2f5;
+  padding: 1em;
+  outline: none;
+  font-size: 1.2rem;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  resize: none;
+}
+
+.intro .edit-form > div div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  position: relative;
+  color: #1877f2;
+}
+
+.intro .edit-form > div div:first-child {
+  padding: 1em 0;
+}
+
+.intro .edit-form > div div .profile-picture-preview {
+  width: 150px;
+  height: 150px;
+  border: none;
+  border-radius: 50%;
+}
+
+.intro .edit-form > div div .cover-photo-preview {
+  width: 450px;
+  height: 220px;
+  border: none;
+  border-radius: 5px;
+  background-color: #f0f2f5;
+}
+
+.intro .edit-form > div div input[type='file'] {
+  width: 30px;
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  cursor: pointer;
+}
+
+.intro .edit-form > div div input[type='file']:hover {
+  background-color: #f0f2f5;
+}
+
+.intro .edit-form button {
+  width: 96%;
+  margin: 0.8em;
+  color: #1877f2;
+  background-color: #e7f3ff;
+}
+
+.intro .edit-form button:hover {
+  -webkit-transform: scale(0.987);
+          transform: scale(0.987);
+  background-color: #c4d7e9bb;
 }
 
 .cols-wrapper {
@@ -271,7 +431,6 @@
 
 .cols-wrapper .user-friends > div figure img {
   border-radius: 5px;
-  border: 1px solid black;
   width: 100%;
 }
 
@@ -572,7 +731,7 @@ body {
   position: -webkit-sticky;
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 200;
 }
 
 .home-header div:first-of-type {
@@ -1163,6 +1322,7 @@ body {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
+  outline: none;
 }
 
 .posts .post-list article form button {

@@ -33,7 +33,7 @@ export default function Header({
                 <input type="search" placeholder="Search People" />
             </div>
             <ul>
-                <Link to={`/users/${user_id}/timeline`}>
+                <Link to={`/users/${user_id}/profile`}>
                     <li>
                         <img src={profile_picture || defaultPicture} alt="" />
                     </li>

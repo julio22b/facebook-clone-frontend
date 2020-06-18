@@ -3,7 +3,8 @@ import EditProfileForm from './EditProfileForm';
 import defaultPicture from '../../images/no-profile-picture.png';
 
 export default function Intro({
-    name,
+    first_name,
+    last_name,
     bio,
     cover_photo,
     profile_picture,
@@ -11,7 +12,7 @@ export default function Intro({
     currentUser,
 }) {
     const [showEditProfileForm, setShowEditProfileForm] = useState(false);
-    const showForm = () => {
+    const switchFormState = () => {
         setShowEditProfileForm(!showEditProfileForm);
     };
     return (
@@ -21,14 +22,25 @@ export default function Intro({
                 <img src={profile_picture || defaultPicture} alt="" className="profile-picture" />
             </div>
             <article>
-                <h1>{name}</h1>
+                <h1>{`${first_name} ${last_name}`}</h1>
                 <p>{bio}</p>
                 {notLoggedInUser !== currentUser ? (
                     ''
                 ) : (
                     <>
-                        <button type="button">Edit profile</button>
-                        <EditProfileForm />
+                        <button type="button" onClick={switchFormState}>
+                            Edit profile
+                        </button>
+                        <EditProfileForm
+                            showEditForm={showEditProfileForm}
+                            handleClick={switchFormState}
+                            userBio={bio}
+                            image={profile_picture}
+                            cover={cover_photo}
+                            userFirstName={first_name}
+                            userLastName={last_name}
+                            currentUser={currentUser}
+                        />
                     </>
                 )}
             </article>

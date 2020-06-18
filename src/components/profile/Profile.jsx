@@ -32,7 +32,8 @@ export default function Profile({ match, currentUser, logOut }) {
             />
             <section className="profile">
                 <Intro
-                    name={`${user.first_name} ${user.last_name}`}
+                    first_name={user.first_name || ''}
+                    last_name={user.last_name || ''}
                     bio={user.bio}
                     cover_photo={user.cover_photo}
                     profile_picture={user.profile_picture}
