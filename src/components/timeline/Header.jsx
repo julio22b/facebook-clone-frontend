@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import Logo from '../../images/facebook-logo-small.png';
 import { Link } from 'react-router-dom';
+import Logo from '../../images/facebook-logo-small.png';
+import home from '../../images/home.png';
 import defaultPicture from '../../images/no-profile-picture.png';
 import Account from './Account';
 import Notifications from './Notifications';
@@ -32,6 +33,7 @@ export default function Header({
                 <img src={Logo} alt="" />
                 <input type="search" placeholder="Search People" />
             </div>
+            <div></div>
             <ul>
                 <Link to={`/users/${user_id}/profile`}>
                     <li>
@@ -39,6 +41,11 @@ export default function Header({
                     </li>
                     <li>{username}</li>
                 </Link>
+                <li>
+                    <Link to={`/users/${user_id}/timeline`}>
+                        <img src={home} alt="" />
+                    </Link>
+                </li>
                 <li className="notifications" onClick={switchNotifModalState}>
                     <i></i>
                     <span>Notifications</span>

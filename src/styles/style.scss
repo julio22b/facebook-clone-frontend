@@ -13,6 +13,7 @@ $red: rgb(211, 72, 72);
 
 @import './reactions';
 @import './profile-page';
+@import './groups';
 
 * {
     padding: 0;
@@ -349,16 +350,31 @@ body {
                 flex: 1;
             }
         }
-        button {
+        button.option {
             background: none;
             border: none;
             width: 100%;
             cursor: pointer;
+            @include flex(row, space-between, center);
+            font-size: 1.1rem;
+            padding: 0.3em 0;
+            img {
+                background-color: rgb(225, 225, 225);
+                padding: 8px;
+                border-radius: 50%;
+                width: 32px;
+                height: 32px;
+            }
+            p {
+                flex: 1;
+                text-align: start;
+                text-indent: 10px;
+            }
         }
         div.option {
-            padding: 0.4em;
             border-radius: 5px;
             cursor: pointer;
+            @extend button.option;
             &:hover {
                 background-color: $gray;
             }
@@ -450,12 +466,57 @@ body {
     }
     .post-list {
         margin-top: 2em;
+
         article {
             padding: 1em;
             margin-bottom: 2em;
             box-shadow: 0 0 3px $border-gray;
             background-color: white;
             border-radius: 5px;
+            position: relative;
+            .post-actions {
+                position: absolute;
+                top: 10px;
+                right: 20px;
+                font-weight: bold;
+                color: $gray-text;
+                height: 40px;
+                width: 40px;
+                cursor: pointer;
+                border-radius: 50%;
+                @include flex(row, center, center);
+                &:hover {
+                    background-color: $gray;
+                }
+                .btn-wrapper {
+                    position: absolute;
+                    bottom: -115px;
+                    left: -270px;
+                    background-color: white;
+                    box-shadow: 0 0 3px $border-gray;
+                    padding: 1em;
+                    min-width: 300px;
+                    div {
+                        button {
+                            @include flex(row, flex-start, center);
+                            width: 100%;
+                            background-color: white;
+                            border: none;
+                            padding: 0.8em 0;
+                            border-radius: 5px;
+                            cursor: pointer;
+                            color: $gray-text;
+                            font-size: 1.05rem;
+                            &:hover {
+                                background-color: $gray;
+                            }
+                            img {
+                                margin-right: 10px;
+                            }
+                        }
+                    }
+                }
+            }
             .user-info {
                 display: flex;
                 margin-bottom: 15px;
@@ -606,6 +667,7 @@ body {
         padding: 0 1em;
         border-radius: 5px;
         box-shadow: 0 0 3px $border-gray;
+        min-width: 220px;
         article {
             display: flex;
             align-items: center;
@@ -618,6 +680,7 @@ body {
             div {
                 flex: 1;
                 margin-left: 15px;
+                @include flex(column);
                 p {
                     font-weight: bold;
                     color: black;
@@ -632,6 +695,10 @@ body {
                     font-weight: bold;
                     color: white;
                     padding: 0.4em;
+                    width: 80%;
+                    &:active {
+                        transform: scale(0.98);
+                    }
                 }
             }
         }

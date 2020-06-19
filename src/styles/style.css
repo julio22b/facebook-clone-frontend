@@ -203,6 +203,10 @@
   width: 100%;
 }
 
+.intro article button img {
+  margin-right: 10px;
+}
+
 .intro .edit-form.active {
   display: block;
 }
@@ -215,8 +219,8 @@
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
   background: white;
-  -webkit-box-shadow: 0 0 500px 300px #b3b5b9;
-          box-shadow: 0 0 500px 300px #b3b5b9;
+  -webkit-box-shadow: 0 0 500px 300px #f0f2f5;
+          box-shadow: 0 0 500px 300px #f0f2f5;
   width: 700px;
   z-index: 100;
 }
@@ -437,6 +441,16 @@
 .cols-wrapper .user-friends > div figure figcaption {
   margin-top: 0.5em;
   font-weight: bold;
+}
+
+.left-col {
+  margin: 2em 0;
+  border: 1px solid #b3b5b9;
+  visibility: hidden;
+}
+
+.left-col .groups {
+  width: 300px;
 }
 
 * {
@@ -947,15 +961,45 @@ body {
           flex: 1;
 }
 
-.home-header .account-modal button, .home-header .notifications-modal button {
+.home-header .account-modal button.option, .home-header .notifications-modal button.option, .home-header .account-modal div.option, .home-header .notifications-modal div.option {
   background: none;
   border: none;
   width: 100%;
   cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 1.1rem;
+  padding: 0.3em 0;
+}
+
+.home-header .account-modal button.option img, .home-header .notifications-modal button.option img, .home-header .account-modal div.option img, .home-header .notifications-modal div.option img {
+  background-color: #e1e1e1;
+  padding: 8px;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+}
+
+.home-header .account-modal button.option p, .home-header .notifications-modal button.option p, .home-header .account-modal div.option p, .home-header .notifications-modal div.option p {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  text-align: start;
+  text-indent: 10px;
 }
 
 .home-header .account-modal div.option, .home-header .notifications-modal div.option {
-  padding: 0.4em;
   border-radius: 5px;
   cursor: pointer;
 }
@@ -1085,6 +1129,79 @@ body {
           box-shadow: 0 0 3px #b3b5b9;
   background-color: white;
   border-radius: 5px;
+  position: relative;
+}
+
+.posts .post-list article .post-actions {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-weight: bold;
+  color: #5f666f;
+  height: 40px;
+  width: 40px;
+  cursor: pointer;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.posts .post-list article .post-actions:hover {
+  background-color: #f0f2f5;
+}
+
+.posts .post-list article .post-actions .btn-wrapper {
+  position: absolute;
+  bottom: -115px;
+  left: -270px;
+  background-color: white;
+  -webkit-box-shadow: 0 0 3px #b3b5b9;
+          box-shadow: 0 0 3px #b3b5b9;
+  padding: 1em;
+  min-width: 300px;
+}
+
+.posts .post-list article .post-actions .btn-wrapper div button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  background-color: white;
+  border: none;
+  padding: 0.8em 0;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #5f666f;
+  font-size: 1.05rem;
+}
+
+.posts .post-list article .post-actions .btn-wrapper div button:hover {
+  background-color: #f0f2f5;
+}
+
+.posts .post-list article .post-actions .btn-wrapper div button img {
+  margin-right: 10px;
 }
 
 .posts .post-list article .user-info {
@@ -1339,6 +1456,7 @@ body {
   border-radius: 5px;
   -webkit-box-shadow: 0 0 3px #b3b5b9;
           box-shadow: 0 0 3px #b3b5b9;
+  min-width: 220px;
 }
 
 .right-col .find-friends article {
@@ -1361,6 +1479,19 @@ body {
       -ms-flex: 1;
           flex: 1;
   margin-left: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
 }
 
 .right-col .find-friends article div p {
@@ -1378,6 +1509,12 @@ body {
   font-weight: bold;
   color: white;
   padding: 0.4em;
+  width: 80%;
+}
+
+.right-col .find-friends article div button:active {
+  -webkit-transform: scale(0.98);
+          transform: scale(0.98);
 }
 
 .errors {

@@ -9,6 +9,8 @@ import wow from '../../images/wow.png';
 import sad from '../../images/sad.png';
 import angry from '../../images/angry.png';
 import defaultPicture from '../../images/no-profile-picture.png';
+import pen from '../../images/pen.png';
+import deleteIcon from '../../images/delete.png';
 import { Link } from 'react-router-dom';
 
 export default function Post({
@@ -22,11 +24,13 @@ export default function Post({
     reactions,
     timestamp,
     currentUser,
+    deletePost,
 }) {
     const [postComments, setPostComments] = useState(comments);
     const [commentsCount, setCommentCount] = useState(comments.length || 0);
     const [comment, setComment] = useState('');
     const [postReactions, setPostReactions] = useState(reactions);
+    const [showPostActions, setShowPostActions] = useState(false);
 
     const createComment = async (e) => {
         e.preventDefault();
@@ -70,6 +74,32 @@ export default function Post({
 
     return (
         <article>
+            {currentUser._id === user_id ? (
+                <div className="post-actions" onClick={() => setShowPostActions(!showPostActions)}>
+                    &sdot;&sdot;&sdot;
+                    {showPostActions && (
+                        <div className="btn-wrapper">
+                            <div>
+                                <button>
+                                    <img src={pen} alt=" " />
+                                    Edit
+                                </button>
+                            </div>
+                            <div>
+                                <button
+                                    type="button"
+                                    onClick={(e) => deletePost(post_id, setShowPostActions)}
+                                >
+                                    <img src={deleteIcon} alt="" />
+                                    Delete
+                                </button>
+                            </div>
+                        </div>
+                    )}
+                </div>
+            ) : (
+                ''
+            )}
             <Link to={`/users/${user_id}/profile`}>
                 <figure className="user-info">
                     <img src={profile_picture || defaultPicture} alt="" />
@@ -79,7 +109,7 @@ export default function Post({
                     </figcaption>
                 </figure>
             </Link>
-            <figure className="post-content">
+            <figure className="post-content" onClick={() => setShowPostActions(false)}>
                 <img src={image || ''} alt="" />
                 <figcaption>{content}</figcaption>
             </figure>

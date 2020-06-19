@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import EditProfileForm from './EditProfileForm';
 import defaultPicture from '../../images/no-profile-picture.png';
+import editIcon from '../../images/edit.png';
 
 export default function Intro({
     first_name,
@@ -23,12 +24,16 @@ export default function Intro({
             </div>
             <article>
                 <h1>{`${first_name} ${last_name}`}</h1>
-                <p>{bio}</p>
+                <p>
+                    <strong>Bio: </strong>
+                    {bio}
+                </p>
                 {notLoggedInUser !== currentUser ? (
                     ''
                 ) : (
                     <>
                         <button type="button" onClick={switchFormState}>
+                            <img src={editIcon} alt="" />
                             Edit profile
                         </button>
                         <EditProfileForm

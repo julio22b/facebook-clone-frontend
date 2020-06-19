@@ -28,6 +28,7 @@ export default function CreatePost({ username, profile_picture, user_id, setPost
                 setErrors(data.errors);
                 return;
             }
+            console.log(data);
             setPosts((posts) => posts.concat(data.post));
             setImage('');
             setContent('');
@@ -53,8 +54,9 @@ export default function CreatePost({ username, profile_picture, user_id, setPost
                 <input
                     name="content"
                     onChange={(e) => setContent(e.target.value)}
-                    placeholder={`What's on your mind, ${username}?`}
+                    placeholder={`What's on your mind, ${username || ''}?`}
                     className="text-input"
+                    value={content}
                 ></input>{' '}
                 {/* THS NEEDS TO INCREASE IN HEIGHT AS THE USER TYPES */}
             </div>
@@ -67,6 +69,7 @@ export default function CreatePost({ username, profile_picture, user_id, setPost
                     name="image"
                     accept=".png, .jpg, .jpeg"
                     onChange={(e) => handleFile(e)}
+                    value={image}
                 />
             </label>
             <ul className="errors">

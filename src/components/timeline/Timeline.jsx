@@ -3,6 +3,7 @@ import headers from '../../services/headers';
 import Header from './Header';
 import PostList from './PostList';
 import FindPeople from '../friends-side-bar/FindPeople';
+import Groups from '../groups/Groups';
 
 export default function Timeline({ match, logOut }) {
     const [user, setUser] = useState({});
@@ -30,6 +31,9 @@ export default function Timeline({ match, logOut }) {
                 logOut={logOut}
             />
             <div className="container">
+                <section className="left-col">
+                    <Groups />
+                </section>
                 <section className="posts">
                     <PostList currentUser={user} />
                 </section>

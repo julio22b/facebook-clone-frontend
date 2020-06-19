@@ -1,6 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import { Link } from 'react-router-dom';
+import logOutIcon from '../../images/log-out.png';
+import darkModeIcon from '../../images/dark-mode.png';
 
 export default function Account({ name, user_id, profile_picture, showAccountSettings, logOut }) {
     return (
@@ -17,14 +19,13 @@ export default function Account({ name, user_id, profile_picture, showAccountSet
             <div className="border"></div>
             <a href="#">
                 <div className="option">
-                    <img src="darkmode" alt="" />
+                    <img src={darkModeIcon} alt="" />
                     <p>Dark mode</p>
                 </div>
             </a>
-            <div className="border"></div>
             <Link to="/users/log-in">
                 <button className="option" onClick={logOut}>
-                    <img src="logout" alt="" />
+                    <img src={logOutIcon} alt="" />
                     <p>Log out</p>
                 </button>
             </Link>

@@ -48,6 +48,9 @@
         }
         button {
             @extend .gray-btn;
+            img {
+                margin-right: 10px;
+            }
         }
     }
     .edit-form.active {
@@ -60,7 +63,7 @@
         left: 50%;
         transform: translateX(-50%);
         background: white;
-        box-shadow: 0 0 500px 300px $border-gray;
+        box-shadow: 0 0 500px 300px $gray;
         width: 700px;
         z-index: 100;
         .errors {
