@@ -27,12 +27,22 @@ export default function Header({
         setShowNotifications(false);
     };
 
+    /* const searchPeople = async (e)=> {
+            const response = await fetch(
+                `http://localhost:4000/users/${currentUser._id}/new-people?limit=20`,
+                { headers: headers(), mode: 'cors' },
+            );
+            const nonFriends = await response.json();
+            setPeople(nonFriends);
+    } */
+
     return (
         <header className="home-header">
-            <div>
+            <form>
                 <img src={Logo} alt="" />
                 <input type="search" placeholder="Search People" />
-            </div>
+                <button>Hide This</button>
+            </form>
             <div></div>
             <ul>
                 <Link to={`/users/${user_id}/profile`}>

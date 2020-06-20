@@ -8,10 +8,11 @@ export default function FindPeople({ currentUser }) {
     useEffect(() => {
         const getPeople = async () => {
             const response = await fetch(
-                `http://localhost:4000/users/${currentUser._id}/new-people`,
+                `http://localhost:4000/users/${currentUser._id}/new-people?limit=5`,
                 { headers: headers(), mode: 'cors' },
             );
             const nonFriends = await response.json();
+            console.log(nonFriends);
             setPeople(nonFriends);
         };
         if (currentUser._id) {
@@ -21,6 +22,7 @@ export default function FindPeople({ currentUser }) {
 
     return (
         <section className="find-friends">
+            <h3>Find people</h3>
             {people.map((person) => (
                 <Person
                     key={person._id}

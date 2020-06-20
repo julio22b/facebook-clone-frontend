@@ -8,21 +8,20 @@ import headers from './services/headers';
 
 function App() {
     const [loggedInUser, setLoggedInUser] = useState({});
+    const user = JSON.parse(localStorage.getItem('user')) || '';
+    const user_id = user ? user.user_id : '';
 
     useEffect(() => {
-        const loggedInUserID = JSON.parse(localStorage.getItem('user'));
         const getUserInfo = async () => {
-            const response = await fetch(`http://localhost:4000/users/${loggedInUserID.user_id}`, {
+            const response = await fetch(`http://localhost:4000/users/${user_id}`, {
                 mode: 'cors',
                 headers: headers(),
             });
             const user = await response.json();
             setLoggedInUser(user);
         };
-        if (loggedInUserID) {
-            getUserInfo();
-        }
-    }, []);
+        getUserInfo();
+    }, [user_id]);
 
     const logOut = () => {
         localStorage.removeItem('user');

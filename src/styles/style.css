@@ -381,7 +381,7 @@
   background-color: white;
   -webkit-box-shadow: 0 0 3px #b3b5b9;
           box-shadow: 0 0 3px #b3b5b9;
-  margin-top: 4em;
+  margin: 4em 0;
   padding: 1em;
   width: 350px;
 }
@@ -892,7 +892,7 @@ body {
 .home-header .account-modal, .home-header .notifications-modal {
   position: absolute;
   right: 20px;
-  bottom: -240px;
+  bottom: -235px;
   background: white;
   -webkit-box-shadow: 0 0 3px #b3b5b9;
           box-shadow: 0 0 3px #b3b5b9;
@@ -1013,9 +1013,49 @@ body {
 }
 
 .home-header .notifications-modal {
-  width: 50px;
-  height: 50px;
-  border: 2px solid black;
+  width: 300px;
+  background: white;
+  -webkit-box-shadow: 0 0 3px #b3b5b9;
+          box-shadow: 0 0 3px #b3b5b9;
+  position: absolute;
+  bottom: -210px;
+  right: 70px;
+}
+
+.home-header .notifications-modal h3 {
+  padding: 0.6em;
+  font-size: 1.4rem;
+}
+
+.home-header .notifications-modal article {
+  margin: 12px;
+}
+
+.home-header .notifications-modal article figure:hover {
+  background-color: white;
+}
+
+.home-header .notifications-modal article div {
+  width: auto;
+  margin-top: 10px;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.home-header .notifications-modal article div .accept-fr,
+.home-header .notifications-modal article div .decline-fr {
+  background-color: #1877f2;
+  cursor: pointer;
+  border-radius: 5px;
+  border: none;
+  padding: 0.6em 1em;
+  font-weight: bold;
+  color: white;
+}
+
+.home-header .notifications-modal article div .decline-fr {
+  margin-left: 15px;
 }
 
 .container {
@@ -1457,6 +1497,10 @@ body {
   -webkit-box-shadow: 0 0 3px #b3b5b9;
           box-shadow: 0 0 3px #b3b5b9;
   min-width: 220px;
+}
+
+.right-col .find-friends h3 {
+  padding: 0.6em 0;
 }
 
 .right-col .find-friends article {

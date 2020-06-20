@@ -29,11 +29,11 @@ export default function CreatePost({ username, profile_picture, user_id, setPost
                 return;
             }
             console.log(data);
-            setPosts((posts) => posts.concat(data.post));
+            setPosts((posts) => [data.post, ...posts]);
             setImage('');
             setContent('');
         } catch (error) {
-            console.log(error);
+            console.error(error);
         }
     };
 

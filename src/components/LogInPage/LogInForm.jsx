@@ -25,6 +25,7 @@ export default function LogInForm() {
             if (user.token) {
                 localStorage.setItem('user', JSON.stringify(user));
                 history.push(`/users/${user.user_id}/timeline`);
+                window.location.reload();
             } else if (user.message) {
                 setErrors(true);
             }

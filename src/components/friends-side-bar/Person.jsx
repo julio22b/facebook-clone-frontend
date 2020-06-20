@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import headers from '../../services/headers';
 import defaultPicture from '../../images/no-profile-picture.png';
+import { Link } from 'react-router-dom';
 
 export default function Person({
     current_user_id,
@@ -25,9 +26,13 @@ export default function Person({
 
     return (
         <article>
-            <img src={profile_picture || defaultPicture} alt="" />
+            <Link to={`/users/${person_id}/profile`}>
+                <img src={profile_picture || defaultPicture} alt="" />
+            </Link>
             <div>
-                <p>{`${first_name} ${last_name}`}</p>
+                <Link to={`/users/${person_id}/profile`}>
+                    <p>{`${first_name} ${last_name}`}</p>
+                </Link>
                 <button type="button" onClick={sendFriendRequest}>
                     {requestStatus || btnText}
                 </button>
