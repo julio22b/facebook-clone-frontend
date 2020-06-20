@@ -16,7 +16,9 @@ export default function Header({
 }) {
     const [showAccountSettings, setShowAccountSettings] = useState(false);
     const [showNotifications, setShowNotifications] = useState(false);
-
+    const pendingFrs = friend_requests
+        ? friend_requests.filter((fr) => fr.status === 'Pending' && fr.to._id === user_id)
+        : [];
     const switchNotifModalState = () => {
         setShowNotifications(!showNotifications);
         setShowAccountSettings(false);
@@ -35,6 +37,8 @@ export default function Header({
             const nonFriends = await response.json();
             setPeople(nonFriends);
     } */
+
+    const frNumber = pendingFrs.length;
 
     return (
         <header className="home-header">
@@ -59,6 +63,9 @@ export default function Header({
                 <li className="notifications" onClick={switchNotifModalState}>
                     <i></i>
                     <span>Notifications</span>
+                    <span className={frNumber > 0 ? 'fr-number active' : 'fr-number'}>
+                        {frNumber > 0 ? frNumber : ''}
+                    </span>
                 </li>
                 <li className="account" onClick={switchAccModalState}>
                     <i></i>
@@ -75,6 +82,7 @@ export default function Header({
             <Notifications
                 showNotifications={showNotifications}
                 friend_requests={friend_requests}
+                pendingFrs={pendingFrs}
             />
         </header>
     );

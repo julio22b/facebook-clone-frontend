@@ -12,7 +12,6 @@ export default function FindPeople({ currentUser }) {
                 { headers: headers(), mode: 'cors' },
             );
             const nonFriends = await response.json();
-            console.log(nonFriends);
             setPeople(nonFriends);
         };
         if (currentUser._id) {

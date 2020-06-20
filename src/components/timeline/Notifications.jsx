@@ -1,28 +1,26 @@
 import React, { useState } from 'react';
 import headers from '../../services/headers';
 
-export default function Notifications({ showNotifications, friend_requests }) {
-    const [acceptBtnText, setAcceptBtnText] = useState('Accept');
-    const acceptRequest = async (fromUserID, toUserID) => {
+export default function Notifications({ showNotifications, friend_requests, pendingFrs }) {
+    const [showResult, setShowResult] = useState(false);
+    const [resultText, setResultText] = useState('');
+
+    const processRequest = async (fromUserID, toUserID, acceptOrDecline, resultText) => {
         try {
             const response = await fetch(
-                `http://localhost:4000/users/friend-request/${fromUserID}/accept/${toUserID}`,
+                `http://localhost:4000/users/friend-request/${fromUserID}/${acceptOrDecline}/${toUserID}`,
                 { method: 'put', mode: 'cors', headers: headers() },
             );
-            console.log(response);
             const data = await response.json();
             console.log(data);
             if (response.status === 200) {
-                setAcceptBtnText('Request accepted');
+                setShowResult(true);
+                setResultText(resultText);
             }
         } catch (e) {
             console.error(e);
         }
     };
-
-    const pendingFrs = friend_requests
-        ? friend_requests.filter((fr) => fr.status === 'Pending')
-        : [];
 
     return (
         <div className={showNotifications ? 'notifications-modal active' : 'notifications-modal'}>
@@ -37,18 +35,37 @@ export default function Notifications({ showNotifications, friend_requests }) {
                                 sent you a friend request.
                             </figcaption>
                         </figure>
-                        <div>
+                        <div className={showResult ? 'hide' : ''}>
                             <button
                                 className="accept-fr"
                                 type="button"
-                                onClick={() => acceptRequest(fr.from._id, fr.to._id)}
+                                onClick={() =>
+                                    processRequest(
+                                        fr.from._id,
+                                        fr.to._id,
+                                        'accept',
+                                        'Request accepted',
+                                    )
+                                }
                             >
-                                {acceptBtnText}
+                                Accept
                             </button>
-                            <button className="decline-fr" type="button">
+                            <button
+                                className="decline-fr"
+                                type="button"
+                                onClick={() =>
+                                    processRequest(
+                                        fr.from._id,
+                                        fr.to._id,
+                                        'decline',
+                                        'Request declined',
+                                    )
+                                }
+                            >
                                 Decline
                             </button>
                         </div>
+                        <div className={showResult ? 'active' : 'hide'}>{resultText}</div>
                     </article>
                 ))}
         </div>
