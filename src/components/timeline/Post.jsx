@@ -12,6 +12,7 @@ import defaultPicture from '../../images/no-profile-picture.png';
 import pen from '../../images/pen.png';
 import deleteIcon from '../../images/delete.png';
 import { Link } from 'react-router-dom';
+import moment from 'moment';
 
 export default function Post({
     post_id,
@@ -105,7 +106,7 @@ export default function Post({
                     <img src={profile_picture || defaultPicture} alt="" />
                     <figcaption>
                         <p className="username">{user}</p>
-                        <p className="post-date">{timestamp}</p>
+                        <p className="post-date">{moment(timestamp).fromNow()}</p>
                     </figcaption>
                 </figure>
             </Link>

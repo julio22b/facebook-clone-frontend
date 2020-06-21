@@ -1,6 +1,7 @@
 import React from 'react';
 import defaultPicture from '../../images/no-profile-picture.png';
 import { Link } from 'react-router-dom';
+import moment from 'moment';
 
 export default function PostComments({ comments }) {
     return (
@@ -16,7 +17,7 @@ export default function PostComments({ comments }) {
                         </Link>
                         <p className="content">{comment.content}</p>
                     </figcaption>
-                    <p className="timestamp">{comment.timestamp}</p>
+                    <p className="timestamp">{moment(comment.timestamp).fromNow()}</p>
                 </figure>
             ))}
         </div>
