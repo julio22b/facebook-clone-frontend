@@ -32,6 +32,7 @@ export default function CreatePost({ username, profile_picture, user_id, setPost
             setPosts((posts) => [data.post, ...posts]);
             setImage('');
             setContent('');
+            setImagePreview('');
         } catch (error) {
             console.error(error);
         }
@@ -41,10 +42,9 @@ export default function CreatePost({ username, profile_picture, user_id, setPost
         setImagePreview(URL.createObjectURL(e.target.files[0]));
         const reader = new FileReader();
         reader.readAsDataURL(e.target.files[0]);
-        reader.onload = () => {
+        reader.onloadend = () => {
             setImage(reader.result);
         };
-        console.log(reader);
     };
 
     return (
@@ -69,7 +69,6 @@ export default function CreatePost({ username, profile_picture, user_id, setPost
                     name="image"
                     accept=".png, .jpg, .jpeg"
                     onChange={(e) => handleFile(e)}
-                    value={image}
                 />
             </label>
             <ul className="errors">

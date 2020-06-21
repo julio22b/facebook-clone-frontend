@@ -10,18 +10,20 @@ export default function PostList({ currentUser }) {
         const abortCon = new AbortController();
         const signal = abortCon.signal;
         const getPosts = async () => {
-            const response = await fetch('http://localhost:4000/posts', {
+            const response = await fetch(`http://localhost:4000/posts?user=${currentUser._id}`, {
                 headers: headers(),
                 signal,
             });
             const postsData = await response.json();
             setPosts(postsData);
         };
-        getPosts();
+        if (currentUser._id) {
+            getPosts();
+        }
         return function () {
             abortCon.abort();
         };
-    }, []);
+    }, [currentUser._id]);
 
     const deletePost = async (post_id, setShowPostActions) => {
         const response = await fetch(`http://localhost:4000/posts/${post_id}`, {

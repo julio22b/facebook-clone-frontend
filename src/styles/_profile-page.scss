@@ -21,13 +21,14 @@
         }
         .profile-picture {
             position: absolute;
-            bottom: -10px;
+            bottom: -20px;
             left: 50%;
             transform: translateX(-50%);
             background: $gray;
             border: 5px solid white;
             border-radius: 50%;
-            width: 180px;
+            width: 200px;
+            height: 200px;
         }
     }
     article {
@@ -193,6 +194,8 @@
                 img {
                     border-radius: 5px;
                     width: 100%;
+                    height: 110px;
+                    object-fit: cover;
                 }
                 figcaption {
                     margin-top: 0.5em;

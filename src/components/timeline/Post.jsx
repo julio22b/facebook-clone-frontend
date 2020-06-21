@@ -110,8 +110,8 @@ export default function Post({
                 </figure>
             </Link>
             <figure className="post-content" onClick={() => setShowPostActions(false)}>
-                <img src={image || ''} alt="" />
                 <figcaption>{content}</figcaption>
+                <img src={image || ''} alt="" className="post-img" />
             </figure>
             <div className="reactions-comment-count">
                 <ul className="reactions">

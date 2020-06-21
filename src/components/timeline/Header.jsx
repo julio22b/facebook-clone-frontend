@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import headers from '../../services/headers';
 import Logo from '../../images/facebook-logo-small.png';
 import home from '../../images/home.png';
 import defaultPicture from '../../images/no-profile-picture.png';
@@ -16,6 +17,8 @@ export default function Header({
 }) {
     const [showAccountSettings, setShowAccountSettings] = useState(false);
     const [showNotifications, setShowNotifications] = useState(false);
+    const [searchPeopleQuery, setSearchPeopleQuery] = useState('');
+    const history = useHistory();
     const pendingFrs = friend_requests
         ? friend_requests.filter((fr) => fr.status === 'Pending' && fr.to._id === user_id)
         : [];
@@ -29,25 +32,40 @@ export default function Header({
         setShowNotifications(false);
     };
 
-    /* const searchPeople = async (e)=> {
+    const searchPeople = async (e) => {
+        e.preventDefault();
+        try {
             const response = await fetch(
-                `http://localhost:4000/users/${currentUser._id}/new-people?limit=20`,
-                { headers: headers(), mode: 'cors' },
+                `http://localhost:4000/users/${user_id}/new-people?limit=20&search=${searchPeopleQuery}`,
+                {
+                    headers: headers(),
+                    mode: 'cors',
+                },
             );
-            const nonFriends = await response.json();
-            setPeople(nonFriends);
-    } */
+            const searchResult = await response.json();
+            if (response.status === 200) {
+                history.push(`/users/${user_id}/search?q=${searchPeopleQuery}`, {
+                    searchResult,
+                });
+            }
+        } catch (e) {
+            console.error(e);
+        }
+    };
 
     const frNumber = pendingFrs.length;
 
     return (
         <header className="home-header">
-            <form>
+            <form onSubmit={(e) => searchPeople(e)}>
                 <img src={Logo} alt="" />
-                <input type="search" placeholder="Search People" />
+                <input
+                    type="search"
+                    placeholder="Search People"
+                    onChange={(e) => setSearchPeopleQuery(e.target.value)}
+                />
                 <button>Hide This</button>
             </form>
-            <div></div>
             <ul>
                 <Link to={`/users/${user_id}/profile`}>
                     <li>

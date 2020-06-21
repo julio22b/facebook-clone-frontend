@@ -13,9 +13,9 @@ export default function EditProfileForm({
 }) {
     const [profile_picture, setProfile_picture] = useState(image);
     const [cover_photo, setCover_photo] = useState(cover);
-    const [bio, setBio] = useState(userBio || '');
-    const [first_name, setFirst_name] = useState(userFirstName || '');
-    const [last_name, setLast_name] = useState(userLastName || '');
+    const [bio, setBio] = useState('');
+    const [first_name, setFirst_name] = useState('');
+    const [last_name, setLast_name] = useState('');
     const [imagePreview, setImagePreview] = useState('');
     const [coverPhotoPreview, setCoverPhotoPreview] = useState('');
     const [errors, setErrors] = useState([]);
@@ -25,11 +25,11 @@ export default function EditProfileForm({
         e.preventDefault();
         try {
             const userData = {
-                profile_picture: profile_picture || '',
-                cover_photo: cover_photo || '',
-                bio,
-                first_name,
-                last_name,
+                profile_picture: profile_picture || image,
+                cover_photo: cover_photo || cover,
+                bio: bio || userBio,
+                first_name: first_name || userFirstName,
+                last_name: last_name || userLastName,
             };
             const response = await fetch(`http://localhost:4000/users/${currentUser}/profile`, {
                 method: 'put',
@@ -87,7 +87,7 @@ export default function EditProfileForm({
                         <input
                             type="file"
                             name="profile_picture"
-                            defaultValue={profile_picture}
+                            /* value={profile_picture} is giving unusuable object error*/
                             onChange={(e) => handleFile(e, setProfile_picture, setImagePreview)}
                         />
                     </div>
@@ -102,7 +102,7 @@ export default function EditProfileForm({
                         <input
                             type="file"
                             name="cover_photo"
-                            defaultValue={cover_photo}
+                            defaultValue={cover}
                             onChange={(e) => handleFile(e, setCover_photo, setCoverPhotoPreview)}
                         />
                     </div>
@@ -116,7 +116,7 @@ export default function EditProfileForm({
                         type="text"
                         name="first_name"
                         required
-                        defaultValue={first_name}
+                        defaultValue={userFirstName}
                         onChange={(e) => setFirst_name(e.target.value)}
                     />
                 </div>
@@ -126,7 +126,7 @@ export default function EditProfileForm({
                         type="text"
                         name="last_name"
                         required
-                        defaultValue={last_name}
+                        defaultValue={userLastName}
                         onChange={(e) => setLast_name(e.target.value)}
                     />
                 </div>
@@ -136,7 +136,7 @@ export default function EditProfileForm({
                         name="bio"
                         cols="40"
                         rows="5"
-                        defaultValue={bio}
+                        defaultValue={userBio}
                         maxLength="101"
                         onChange={(e) => setBio(e.target.value)}
                     ></textarea>

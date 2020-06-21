@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import LogInPage from './components/LogInPage/LogInPage';
 import Timeline from './components/timeline/Timeline';
 import Profile from './components/profile/Profile';
+import SearchPeople from './components/timeline/SearchPeople';
 import headers from './services/headers';
 
 function App() {
@@ -20,7 +21,9 @@ function App() {
             const user = await response.json();
             setLoggedInUser(user);
         };
-        getUserInfo();
+        if (user_id) {
+            getUserInfo();
+        }
     }, [user_id]);
 
     const logOut = () => {
@@ -43,6 +46,13 @@ function App() {
                         exact
                         render={(props) => (
                             <Profile {...props} currentUser={loggedInUser} logOut={logOut} />
+                        )}
+                    />
+                    <Route
+                        path="/users/:id/search"
+                        exact
+                        render={(props) => (
+                            <SearchPeople {...props} currentUser={loggedInUser} logOut={logOut} />
                         )}
                     />
                 </Switch>

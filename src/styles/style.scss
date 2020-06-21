@@ -14,6 +14,7 @@ $red: rgb(211, 72, 72);
 @import './reactions';
 @import './profile-page';
 @import './groups';
+@import './search-people';
 
 * {
     padding: 0;
@@ -213,7 +214,7 @@ body {
     position: sticky;
     top: 0;
     z-index: 200;
-    div:first-of-type {
+    form:first-of-type {
         @include flex(row, space-between, center);
         width: 300px;
         input {
@@ -224,6 +225,10 @@ body {
             flex: 1;
             margin-left: 10px;
             font-size: 1.05rem;
+        }
+        button {
+            width: 1px;
+            opacity: 0;
         }
     }
     a {
@@ -323,6 +328,7 @@ body {
         box-shadow: 0 0 3px $border-gray;
         padding: 0.4em;
         display: none;
+        min-width: 300px;
         a {
             border-radius: 10px;
             margin-right: 0;
@@ -521,6 +527,9 @@ body {
             font-weight: bold;
             margin-top: 1em;
             cursor: pointer;
+            &:active {
+                transform: scale(0.98);
+            }
         }
     }
     .post-list {
@@ -598,6 +607,10 @@ body {
             }
             .post-content {
                 margin-bottom: 1.5em;
+                .post-img {
+                    max-width: 100%;
+                    margin-top: 20px;
+                }
                 figcaption {
                     font-size: 1.1rem;
                 }
