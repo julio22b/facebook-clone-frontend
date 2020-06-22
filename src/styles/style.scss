@@ -410,11 +410,17 @@ body {
         background: white;
         box-shadow: 0 0 3px $border-gray;
         position: absolute;
-        bottom: -210px;
+        bottom: 0;
         right: 70px;
+        transform: translateY(100%);
         h3 {
             padding: 0.6em;
             font-size: 1.4rem;
+        }
+        p {
+            padding: 0.6em;
+            color: $gray-text;
+            font-size: 1.1rem;
         }
         article {
             margin: 12px;

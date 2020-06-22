@@ -68,6 +68,7 @@ export default function Notifications({ showNotifications, friend_requests, pend
                         <div className={showResult ? 'active' : 'hide'}>{resultText}</div>
                     </article>
                 ))}
+            {pendingFrs.length === 0 && <p>There are no new notifications.</p>}
         </div>
     );
 }

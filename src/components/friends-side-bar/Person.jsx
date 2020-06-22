@@ -19,8 +19,6 @@ export default function Person({
             { method: 'post', mode: 'cors', headers: headers() },
         );
         const data = await response.json();
-
-        console.log(data);
         setRequestStatus(data.message);
     };
 

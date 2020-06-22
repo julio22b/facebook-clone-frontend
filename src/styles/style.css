@@ -150,13 +150,18 @@
   position: relative;
 }
 
-.intro .user-images .cover-photo {
+.intro .user-images .cover-photo-container {
   width: 900px;
   height: 350px;
   border-radius: 10px;
   background: #a3a3aa;
   background: -webkit-gradient(linear, left bottom, left top, from(#a3a3aa), color-stop(35%, #f0f2f5));
   background: linear-gradient(0deg, #a3a3aa 0%, #f0f2f5 35%);
+}
+
+.intro .user-images .cover-photo-container .cover-photo {
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .intro .user-images .profile-picture {
@@ -206,6 +211,20 @@
 
 .intro article button img {
   margin-right: 10px;
+}
+
+.intro article button.add-friend {
+  background-color: #1877f2;
+  color: white;
+}
+
+.intro article button.add-friend:hover {
+  background-color: #1877f2;
+}
+
+.intro article button.add-friend:active {
+  -webkit-transform: scale(0.98);
+          transform: scale(0.98);
 }
 
 .intro .edit-form.active {
@@ -1116,13 +1135,21 @@ body {
   -webkit-box-shadow: 0 0 3px #b3b5b9;
           box-shadow: 0 0 3px #b3b5b9;
   position: absolute;
-  bottom: -210px;
+  bottom: 0;
   right: 70px;
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
 }
 
 .home-header .notifications-modal h3 {
   padding: 0.6em;
   font-size: 1.4rem;
+}
+
+.home-header .notifications-modal p {
+  padding: 0.6em;
+  color: #5f666f;
+  font-size: 1.1rem;
 }
 
 .home-header .notifications-modal article {

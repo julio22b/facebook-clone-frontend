@@ -17,7 +17,7 @@ export default function PostComments({ comments }) {
                         </Link>
                         <p className="content">{comment.content}</p>
                     </figcaption>
-                    <p className="timestamp">{moment(comment.timestamp).fromNow()}</p>
+                    <p className="timestamp">{moment(new Date(comment.timestamp)).fromNow()}</p>
                 </figure>
             ))}
         </div>

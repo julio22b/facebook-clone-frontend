@@ -106,7 +106,7 @@ export default function Post({
                     <img src={profile_picture || defaultPicture} alt="" />
                     <figcaption>
                         <p className="username">{user}</p>
-                        <p className="post-date">{moment(timestamp).fromNow()}</p>
+                        <p className="post-date">{moment(new Date(timestamp)).fromNow()}</p>
                     </figcaption>
                 </figure>
             </Link>

@@ -39,6 +39,8 @@ export default function Profile({ match, currentUser, logOut }) {
                     profile_picture={user.profile_picture}
                     notLoggedInUser={match.params.id}
                     currentUser={currentUser._id}
+                    friends={currentUser.friends}
+                    friend_requests={currentUser.friend_requests}
                 />
                 <div className="cols-wrapper">
                     <Friends friends={user.friends} />
