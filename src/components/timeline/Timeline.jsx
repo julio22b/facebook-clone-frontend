@@ -4,6 +4,7 @@ import Header from './Header';
 import PostList from './PostList';
 import FindPeople from '../friends-side-bar/FindPeople';
 import Groups from '../groups/Groups';
+import Contacts from '../chat-side-bar/Contacts';
 
 export default function Timeline({ match, logOut }) {
     const [user, setUser] = useState({});
@@ -39,6 +40,7 @@ export default function Timeline({ match, logOut }) {
                 </section>
                 <section className="right-col">
                     <FindPeople currentUser={user} />
+                    <Contacts currentUser={user} />
                 </section>
             </div>
         </>

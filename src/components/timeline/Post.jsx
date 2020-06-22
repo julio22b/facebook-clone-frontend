@@ -32,6 +32,7 @@ export default function Post({
     const [comment, setComment] = useState('');
     const [postReactions, setPostReactions] = useState(reactions);
     const [showPostActions, setShowPostActions] = useState(false);
+    const currentUserID = currentUser._id ? currentUser._id : currentUser;
 
     const createComment = async (e) => {
         e.preventDefault();
@@ -75,7 +76,7 @@ export default function Post({
 
     return (
         <article>
-            {currentUser._id === user_id ? (
+            {currentUserID === user_id ? (
                 <div className="post-actions" onClick={() => setShowPostActions(!showPostActions)}>
                     &sdot;&sdot;&sdot;
                     {showPostActions && (
