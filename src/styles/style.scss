@@ -740,15 +740,16 @@ body {
 
 .right-col {
     margin: 2em 0;
+    h3 {
+        padding: 0.6em 0;
+        color: $gray-text;
+    }
     .find-friends {
         background-color: white;
         padding: 0 1em;
         border-radius: 5px;
         box-shadow: 0 0 3px $border-gray;
-        min-width: 220px;
-        h3 {
-            padding: 0.6em 0;
-        }
+        min-width: 250px;
         article {
             display: flex;
             align-items: center;
@@ -761,7 +762,7 @@ body {
             div {
                 flex: 1;
                 margin-left: 15px;
-                @include flex(column);
+                @include flex(row, space-between, center);
                 p {
                     font-weight: bold;
                     color: black;
@@ -776,10 +777,111 @@ body {
                     font-weight: bold;
                     color: white;
                     padding: 0.4em;
-                    width: 80%;
+                    width: 40%;
                     &:active {
                         transform: scale(0.98);
                     }
+                }
+            }
+        }
+    }
+    .contacts-chat {
+        margin-top: 4em;
+        padding: 0 1em;
+        width: 350px;
+        .info-chat-wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+        }
+        figure {
+            display: flex;
+            align-items: center;
+            padding: 0.4em 0.2em;
+            border-radius: 10px;
+            width: 100%;
+            cursor: pointer;
+            &:hover {
+                background-color: rgb(225, 225, 225);
+            }
+            img {
+                width: 35px;
+                height: 35px;
+                border-radius: 50%;
+                margin-right: 10px;
+            }
+        }
+        .chat.close,
+        .chat.open {
+            transform: scale(0);
+            transform-origin: top;
+            transition: transform 150ms ease;
+        }
+        .chat.open {
+            transform: scale(1);
+            margin: 1em 0;
+        }
+        .chat {
+            background-color: white;
+            box-shadow: 0 0 6px $border-gray;
+            border-radius: 10px;
+            padding: 1em;
+            width: 100%;
+            .friend-info {
+                @include flex(row, space-between, center);
+                box-shadow: 0 8px 14px -6px $gray;
+                button {
+                    color: $blue;
+                    border: none;
+                    cursor: pointer;
+                    background-color: transparent;
+                    font-weight: bold;
+                    border-radius: 50%;
+                    padding: 0.7em;
+                    &:hover {
+                        background-color: rgba(222, 222, 236, 0.644);
+                    }
+                }
+                figure:hover {
+                    background-color: white !important;
+                }
+            }
+            .messages {
+                height: 300px;
+                @include flex(column, flex-start, flex-start);
+                overflow-y: scroll;
+                .message {
+                    padding: 0.6em 0.8em;
+                    margin: 0.6em 0.2em;
+                    background-color: $blue;
+                    color: white;
+                    border-radius: 25px;
+                    align-self: flex-end;
+                    max-width: 80%;
+                }
+                .message.other {
+                    background-color: $gray;
+                    color: #333;
+                    align-self: flex-start;
+                }
+            }
+            form {
+                box-shadow: 0 -10px 30px -12px $gray;
+                padding-top: 1em;
+                input {
+                    border-radius: 25px;
+                    background-color: rgb(225, 225, 225);
+                    border: none;
+                    padding: 0.8em 0.6em;
+                    width: 100%;
+                    &:focus {
+                        outline: none;
+                    }
+                }
+                button {
+                    width: 0;
+                    border: none;
                 }
             }
         }

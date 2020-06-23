@@ -1,12 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import defaultPicture from '../../images/no-profile-picture.png';
 import ChatBubble from './ChatBubble';
 
-export default function Friend({ friend }) {
+export default function Friend({ friend, io, currentUserID }) {
     const [showChatBubble, setShowChatBubble] = useState(false);
+    const inputRef = useRef();
+    const openChat = () => {
+        setShowChatBubble(!showChatBubble);
+        if (!showChatBubble) {
+            inputRef.current.focus();
+            inputRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
     return (
         <div className="info-chat-wrapper">
-            <figure key={friend._id} onClick={() => setShowChatBubble(!showChatBubble)}>
+            <figure key={friend._id} onClick={() => openChat()}>
                 <img src={friend.profile_picture || defaultPicture} alt="" />
                 <figcaption>{`${friend.first_name} ${friend.last_name}`}</figcaption>
             </figure>
@@ -14,6 +22,9 @@ export default function Friend({ friend }) {
                 friend={friend}
                 setShowChatBubble={setShowChatBubble}
                 showChatBubble={showChatBubble}
+                inputRef={inputRef}
+                io={io}
+                currentUserID={currentUserID}
             />
         </div>
     );

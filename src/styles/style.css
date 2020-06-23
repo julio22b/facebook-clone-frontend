@@ -1644,17 +1644,18 @@ body {
   margin: 2em 0;
 }
 
+.right-col h3 {
+  padding: 0.6em 0;
+  color: #5f666f;
+}
+
 .right-col .find-friends {
   background-color: white;
   padding: 0 1em;
   border-radius: 5px;
   -webkit-box-shadow: 0 0 3px #b3b5b9;
           box-shadow: 0 0 3px #b3b5b9;
-  min-width: 220px;
-}
-
-.right-col .find-friends h3 {
-  padding: 0.6em 0;
+  min-width: 250px;
 }
 
 .right-col .find-friends article {
@@ -1680,16 +1681,16 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
+  -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  -webkit-box-align: stretch;
-      -ms-flex-align: stretch;
-          align-items: stretch;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .right-col .find-friends article div p {
@@ -1707,12 +1708,180 @@ body {
   font-weight: bold;
   color: white;
   padding: 0.4em;
-  width: 80%;
+  width: 40%;
 }
 
 .right-col .find-friends article div button:active {
   -webkit-transform: scale(0.98);
           transform: scale(0.98);
+}
+
+.right-col .contacts-chat {
+  margin-top: 4em;
+  padding: 0 1em;
+  width: 350px;
+}
+
+.right-col .contacts-chat .info-chat-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.right-col .contacts-chat figure {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0.4em 0.2em;
+  border-radius: 10px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.right-col .contacts-chat figure:hover {
+  background-color: #e1e1e1;
+}
+
+.right-col .contacts-chat figure img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.right-col .contacts-chat .chat.close,
+.right-col .contacts-chat .chat.open {
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  -webkit-transform-origin: top;
+          transform-origin: top;
+  -webkit-transition: -webkit-transform 150ms ease;
+  transition: -webkit-transform 150ms ease;
+  transition: transform 150ms ease;
+  transition: transform 150ms ease, -webkit-transform 150ms ease;
+}
+
+.right-col .contacts-chat .chat.open {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  margin: 1em 0;
+}
+
+.right-col .contacts-chat .chat {
+  background-color: white;
+  -webkit-box-shadow: 0 0 6px #b3b5b9;
+          box-shadow: 0 0 6px #b3b5b9;
+  border-radius: 10px;
+  padding: 1em;
+  width: 100%;
+}
+
+.right-col .contacts-chat .chat .friend-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-shadow: 0 8px 14px -6px #f0f2f5;
+          box-shadow: 0 8px 14px -6px #f0f2f5;
+}
+
+.right-col .contacts-chat .chat .friend-info button {
+  color: #1877f2;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  font-weight: bold;
+  border-radius: 50%;
+  padding: 0.7em;
+}
+
+.right-col .contacts-chat .chat .friend-info button:hover {
+  background-color: rgba(222, 222, 236, 0.644);
+}
+
+.right-col .contacts-chat .chat .friend-info figure:hover {
+  background-color: white !important;
+}
+
+.right-col .contacts-chat .chat .messages {
+  height: 300px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  overflow-y: scroll;
+}
+
+.right-col .contacts-chat .chat .messages .message {
+  padding: 0.6em 0.8em;
+  margin: 0.6em 0.2em;
+  background-color: #1877f2;
+  color: white;
+  border-radius: 25px;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  max-width: 80%;
+}
+
+.right-col .contacts-chat .chat .messages .message.other {
+  background-color: #f0f2f5;
+  color: #333;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+}
+
+.right-col .contacts-chat .chat form {
+  -webkit-box-shadow: 0 -10px 30px -12px #f0f2f5;
+          box-shadow: 0 -10px 30px -12px #f0f2f5;
+  padding-top: 1em;
+}
+
+.right-col .contacts-chat .chat form input {
+  border-radius: 25px;
+  background-color: #e1e1e1;
+  border: none;
+  padding: 0.8em 0.6em;
+  width: 100%;
+}
+
+.right-col .contacts-chat .chat form input:focus {
+  outline: none;
+}
+
+.right-col .contacts-chat .chat form button {
+  width: 0;
+  border: none;
 }
 
 .errors {
