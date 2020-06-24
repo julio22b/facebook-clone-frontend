@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import defaultPicture from '../../images/no-profile-picture.png';
 
 export default function ChatBubble({
@@ -6,23 +6,32 @@ export default function ChatBubble({
     setShowChatBubble,
     friend,
     inputRef,
-    io,
+    socket,
     active,
     currentUserID,
 }) {
     const [message, setMessage] = useState('');
     const [chatMessages, setChatMessages] = useState([]);
+    const msgsRef = useRef();
+
     const sendMessage = (e) => {
         e.preventDefault();
-        io.emit('message', { friend, message });
+        socket.emit('send_message', { to: friend._id, message, from: currentUserID });
         setMessage('');
     };
 
     useEffect(() => {
-        io.on('message', (message) => {
-            setChatMessages((prevState) => chatMessages.concat(message));
+        socket.on('new_message', (message) => {
+            console.log(message);
+            setChatMessages((prevState) => prevState.concat(message));
+            msgsRef.current.scrollTop = msgsRef.current.scrollHeight;
+            setShowChatBubble(true);
         });
-    }, [io, chatMessages]);
+
+        return () => {
+            socket.off('send_message');
+        };
+    }, [socket, setShowChatBubble]);
 
     if (friend) {
         return (
@@ -39,7 +48,7 @@ export default function ChatBubble({
                         X
                     </button>
                 </div>
-                <div className="messages">
+                <div className="messages" ref={msgsRef}>
                     {chatMessages.map((msg, index) => (
                         <p
                             key={index}
@@ -56,6 +65,7 @@ export default function ChatBubble({
                         ref={inputRef}
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
+                        minLength="1"
                     />
                     <button></button>
                 </form>

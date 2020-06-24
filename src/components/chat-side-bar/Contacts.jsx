@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Friend from './Friend';
-import socket from 'socket.io-client';
+import io from 'socket.io-client';
 
 export default function Contacts({ currentUser }) {
-    const io = socket.connect('http://localhost:4000', {
+    const socket = io.connect('http://localhost:4000', {
         transports: ['websocket', 'polling', 'flashsocket'],
     });
+
+    useEffect(() => {
+        socket.emit('connection', currentUser._id);
+    }, [currentUser._id, socket]);
+
     return (
         <section className="contacts-chat">
             <h3>Contacts</h3>
@@ -14,7 +19,7 @@ export default function Contacts({ currentUser }) {
                     <Friend
                         friend={friend}
                         key={friend._id}
-                        io={io}
+                        socket={socket}
                         currentUserID={currentUser._id}
                     />
                 ))}

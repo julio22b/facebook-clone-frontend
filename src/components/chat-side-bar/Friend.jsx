@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import defaultPicture from '../../images/no-profile-picture.png';
 import ChatBubble from './ChatBubble';
 
-export default function Friend({ friend, io, currentUserID }) {
+export default function Friend({ friend, socket, currentUserID }) {
     const [showChatBubble, setShowChatBubble] = useState(false);
     const inputRef = useRef();
     const openChat = () => {
@@ -23,7 +23,7 @@ export default function Friend({ friend, io, currentUserID }) {
                 setShowChatBubble={setShowChatBubble}
                 showChatBubble={showChatBubble}
                 inputRef={inputRef}
-                io={io}
+                socket={socket}
                 currentUserID={currentUserID}
             />
         </div>
