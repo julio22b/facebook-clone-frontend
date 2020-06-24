@@ -92,9 +92,9 @@ body {
                 padding: 2px 5px;
                 color: white;
                 font-weight: bold;
-                border: none;
                 border: 1px solid #29487d;
                 cursor: pointer;
+                min-width: 65px;
                 &:hover {
                     background-color: #365899;
                 }
@@ -851,6 +851,7 @@ body {
                 height: 300px;
                 @include flex(column, flex-start, flex-start);
                 overflow-y: scroll;
+                margin-bottom: 0.5em;
                 .message {
                     padding: 0.6em 0.8em;
                     margin: 0.6em 0.2em;

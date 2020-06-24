@@ -9,6 +9,12 @@ export default function Contacts({ currentUser }) {
 
     useEffect(() => {
         socket.emit('connection', currentUser._id);
+        socket.on('connected_users', (usersArr) => {
+            console.log(usersArr);
+        });
+        return () => {
+            socket.off('connected_users');
+        };
     }, [currentUser._id, socket]);
 
     return (

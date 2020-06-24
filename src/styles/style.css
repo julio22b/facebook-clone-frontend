@@ -645,9 +645,9 @@ body {
   padding: 2px 5px;
   color: white;
   font-weight: bold;
-  border: none;
   border: 1px solid #29487d;
   cursor: pointer;
+  min-width: 65px;
 }
 
 .log-in-page-header .log-in-wrapper .log-in-form button:hover {
@@ -1841,6 +1841,7 @@ body {
       -ms-flex-align: start;
           align-items: flex-start;
   overflow-y: scroll;
+  margin-bottom: 0.5em;
 }
 
 .right-col .contacts-chat .chat .messages .message {
