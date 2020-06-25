@@ -1,6 +1,6 @@
 .search-people {
     margin: 4em auto;
-    box-shadow: 0 0 3px $gray;
+    box-shadow: 0 0 6px $gray;
     padding: 1em;
     width: 40%;
     background-color: white;
@@ -16,6 +16,7 @@
     figure {
         border-bottom: 1px solid $border-gray;
         padding: 0.8em 0;
+        @include flex(row, space-between, center);
         a {
             @include flex(row, flex-start, center);
         }
@@ -32,6 +33,15 @@
         }
         &:last-child {
             border: none;
+        }
+        .action {
+            padding: 0.5em;
+            background-color: $blue;
+            color: white;
+            font-weight: bold;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
         }
     }
 }

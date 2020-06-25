@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 
 export default function SearchPeople({ currentUser, logOut, location }) {
     const people = location.state.searchResult;
+    const friendsID = currentUser.friends && currentUser.friends.map((friend) => friend._id);
+
     return (
         <>
             <Header
@@ -24,6 +26,15 @@ export default function SearchPeople({ currentUser, logOut, location }) {
                                 <img src={person.profile_picture || defaultPicture} alt="" />
                                 <figcaption>{`${person.first_name} ${person.last_name}`}</figcaption>
                             </Link>
+                            {friendsID && friendsID.includes(person._id) ? (
+                                <div className="action">Friend</div>
+                            ) : (
+                                <Link to={`/users/${person._id}/profile`}>
+                                    <div className="action">
+                                        {person._id === currentUser._id ? ' You ' : 'See profile'}
+                                    </div>
+                                </Link>
+                            )}
                         </figure>
                     ))
                 ) : (

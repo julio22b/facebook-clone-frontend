@@ -478,8 +478,8 @@
 
 .search-people {
   margin: 4em auto;
-  -webkit-box-shadow: 0 0 3px #f0f2f5;
-          box-shadow: 0 0 3px #f0f2f5;
+  -webkit-box-shadow: 0 0 6px #f0f2f5;
+          box-shadow: 0 0 6px #f0f2f5;
   padding: 1em;
   width: 40%;
   background-color: white;
@@ -499,6 +499,19 @@
 .search-people figure {
   border-bottom: 1px solid #b3b5b9;
   padding: 0.8em 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .search-people figure a {
@@ -533,6 +546,16 @@
 
 .search-people figure:last-child {
   border: none;
+}
+
+.search-people figure .action {
+  padding: 0.5em;
+  background-color: #1877f2;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
 }
 
 * {

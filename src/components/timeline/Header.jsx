@@ -36,13 +36,14 @@ export default function Header({
         e.preventDefault();
         try {
             const response = await fetch(
-                `http://localhost:4000/users/${user_id}/new-people?limit=20&search=${searchPeopleQuery}`,
+                `http://localhost:4000/users/${user_id}/search?limit=50&search=${searchPeopleQuery}`,
                 {
                     headers: headers(),
                     mode: 'cors',
                 },
             );
             const searchResult = await response.json();
+            console.log(searchResult);
             if (response.status === 200) {
                 history.push(`/users/${user_id}/search?q=${searchPeopleQuery}`, {
                     searchResult,
