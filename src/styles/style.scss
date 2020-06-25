@@ -812,15 +812,21 @@ body {
                 margin-right: 10px;
             }
         }
-        .chat.close,
-        .chat.open {
-            transform: scale(0);
+        .chat.close {
+            transform: scaleY(0);
             transform-origin: top;
-            transition: transform 150ms ease;
+            transition: all 150ms ease;
+            opacity: 0;
+            height: 1px;
+            visibility: hidden;
+            margin-top: -10px;
         }
         .chat.open {
-            transform: scale(1);
+            visibility: visible;
+            transform: scaleY(1);
             margin: 1em 0;
+            height: auto;
+            transition: all 150ms ease;
         }
         .chat {
             background-color: white;

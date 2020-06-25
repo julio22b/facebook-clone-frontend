@@ -1762,22 +1762,27 @@ body {
   margin-right: 10px;
 }
 
-.right-col .contacts-chat .chat.close,
-.right-col .contacts-chat .chat.open {
-  -webkit-transform: scale(0);
-          transform: scale(0);
+.right-col .contacts-chat .chat.close {
+  -webkit-transform: scaleY(0);
+          transform: scaleY(0);
   -webkit-transform-origin: top;
           transform-origin: top;
-  -webkit-transition: -webkit-transform 150ms ease;
-  transition: -webkit-transform 150ms ease;
-  transition: transform 150ms ease;
-  transition: transform 150ms ease, -webkit-transform 150ms ease;
+  -webkit-transition: all 150ms ease;
+  transition: all 150ms ease;
+  opacity: 0;
+  height: 1px;
+  visibility: hidden;
+  margin-top: -10px;
 }
 
 .right-col .contacts-chat .chat.open {
-  -webkit-transform: scale(1);
-          transform: scale(1);
+  visibility: visible;
+  -webkit-transform: scaleY(1);
+          transform: scaleY(1);
   margin: 1em 0;
+  height: auto;
+  -webkit-transition: all 150ms ease;
+  transition: all 150ms ease;
 }
 
 .right-col .contacts-chat .chat {

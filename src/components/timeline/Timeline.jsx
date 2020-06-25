@@ -11,12 +11,15 @@ export default function Timeline({ match, logOut }) {
 
     useEffect(() => {
         const getUser = async () => {
-            const response = await fetch(`http://localhost:4000/users/${match.params.id}`, {
-                mode: 'cors',
-                headers: headers(),
-            });
-            const userData = await response.json();
-            setUser(userData);
+            try {
+                const response = await fetch(`http://localhost:4000/users/${match.params.id}`, {
+                    headers: headers(),
+                });
+                const userData = await response.json();
+                setUser(userData);
+            } catch (err) {
+                console.error(err);
+            }
         };
         getUser();
     }, [match.params.id]);

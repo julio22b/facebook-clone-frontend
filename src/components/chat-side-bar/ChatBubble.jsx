@@ -13,25 +13,35 @@ export default function ChatBubble({
     const [message, setMessage] = useState('');
     const [chatMessages, setChatMessages] = useState([]);
     const msgsRef = useRef();
+    const chatIdentifier = [friend._id, currentUserID];
 
     const sendMessage = (e) => {
         e.preventDefault();
-        socket.emit('send_message', { to: friend._id, message, from: currentUserID });
+        socket.emit('send_message', {
+            to: friend._id,
+            message,
+            from: currentUserID,
+            chatIdentifier,
+        });
         setMessage('');
     };
 
     useEffect(() => {
         socket.on('new_message', (message) => {
-            console.log(message);
-            setChatMessages((prevState) => prevState.concat(message));
-            msgsRef.current.scrollTop = msgsRef.current.scrollHeight;
-            setShowChatBubble(true);
+            if (
+                message.chatIdentifier.includes(friend._id) &&
+                message.chatIdentifier.includes(currentUserID)
+            ) {
+                setChatMessages((prevState) => prevState.concat(message));
+                msgsRef.current.scrollTop = msgsRef.current.scrollHeight;
+                setShowChatBubble(true);
+            }
         });
 
         return () => {
             socket.off('send_message');
         };
-    }, [socket, setShowChatBubble]);
+    }, [socket, setShowChatBubble, currentUserID, friend._id]);
 
     if (friend) {
         return (
