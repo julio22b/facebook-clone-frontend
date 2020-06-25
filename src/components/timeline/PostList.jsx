@@ -3,8 +3,9 @@ import Post from './Post';
 import headers from '../../services/headers';
 import CreatePost from './CreatePost';
 
-export default function PostList({ currentUser }) {
+export default function PostList({ currentUser, socket }) {
     const [posts, setPosts] = useState([]);
+    const friends = currentUser.friends && currentUser.friends.map((friend) => friend._id);
 
     useEffect(() => {
         const abortCon = new AbortController();
@@ -16,12 +17,18 @@ export default function PostList({ currentUser }) {
             });
             const postsData = await response.json();
             setPosts(postsData);
+            socket.on('new_post', (post) => {
+                if (post.user._id !== currentUser._id && friends.includes(post.user._id)) {
+                    setPosts((posts) => [post, ...posts]);
+                }
+            });
         };
         if (currentUser._id) {
             getPosts();
         }
         return function () {
             abortCon.abort();
+            socket.off('new_post');
         };
     }, [currentUser._id]);
 
@@ -45,6 +52,7 @@ export default function PostList({ currentUser }) {
                 profile_picture={currentUser.profile_picture}
                 user_id={currentUser._id}
                 setPosts={setPosts}
+                socket={socket}
             />
             <section className="post-list">
                 {posts.map((post) => (

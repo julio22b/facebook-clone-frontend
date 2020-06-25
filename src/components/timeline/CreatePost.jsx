@@ -3,7 +3,7 @@ import authHeader from '../../services/authHeader';
 import addPhoto from '../../images/add-photo.png';
 import defaultPicture from '../../images/no-profile-picture.png';
 
-export default function CreatePost({ username, profile_picture, user_id, setPosts }) {
+export default function CreatePost({ username, profile_picture, user_id, setPosts, socket }) {
     const [content, setContent] = useState('');
     const [image, setImage] = useState('');
     const [imagePreview, setImagePreview] = useState('');
@@ -28,8 +28,8 @@ export default function CreatePost({ username, profile_picture, user_id, setPost
                 setErrors(data.errors);
                 return;
             }
-            console.log(data);
             setPosts((posts) => [data.post, ...posts]);
+            socket.emit('new_post', data.post);
             setImage('');
             setContent('');
             setImagePreview('');

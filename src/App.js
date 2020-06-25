@@ -14,12 +14,17 @@ function App() {
 
     useEffect(() => {
         const getUserInfo = async () => {
-            const response = await fetch(`http://localhost:4000/users/${user_id}`, {
-                mode: 'cors',
-                headers: headers(),
-            });
-            const user = await response.json();
-            setLoggedInUser(user);
+            try {
+                const response = await fetch(`http://localhost:4000/users/${user_id}`, {
+                    mode: 'cors',
+                    headers: headers(),
+                });
+                const user = await response.json();
+                console.log(response);
+                setLoggedInUser(user);
+            } catch (err) {
+                console.error(err);
+            }
         };
         if (user_id) {
             getUserInfo();
