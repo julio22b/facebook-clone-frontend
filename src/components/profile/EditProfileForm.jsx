@@ -66,6 +66,7 @@ export default function EditProfileForm({
             <form
                 className={showEditForm ? 'edit-form active' : 'edit-form'}
                 onSubmit={(e) => updateProfile(e)}
+                encType="multipart/form-data"
             >
                 {errors.length > 0 && (
                     <ul className="errors">
@@ -87,12 +88,15 @@ export default function EditProfileForm({
                         <input
                             type="file"
                             name="profile_picture"
-                            /* value={profile_picture} is giving unusuable object error*/
                             onChange={(e) => handleFile(e, setProfile_picture, setImagePreview)}
                         />
                     </div>
                     <div>
-                        <img src={imagePreview} alt="" className="profile-picture-preview" />
+                        <img
+                            src={imagePreview || profile_picture}
+                            alt=""
+                            className="profile-picture-preview"
+                        />
                     </div>
                 </div>
                 <div>
@@ -102,12 +106,15 @@ export default function EditProfileForm({
                         <input
                             type="file"
                             name="cover_photo"
-                            defaultValue={cover}
                             onChange={(e) => handleFile(e, setCover_photo, setCoverPhotoPreview)}
                         />
                     </div>
                     <div>
-                        <img src={coverPhotoPreview} alt="" className="cover-photo-preview" />
+                        <img
+                            src={coverPhotoPreview || cover}
+                            alt=""
+                            className="cover-photo-preview"
+                        />
                     </div>
                 </div>
                 <div>

@@ -20,7 +20,6 @@ function App() {
                     headers: headers(),
                 });
                 const user = await response.json();
-                console.log(response);
                 setLoggedInUser(user);
             } catch (err) {
                 console.error(err);

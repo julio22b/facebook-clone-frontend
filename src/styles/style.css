@@ -157,11 +157,13 @@
   background: #a3a3aa;
   background: -webkit-gradient(linear, left bottom, left top, from(#a3a3aa), color-stop(35%, #f0f2f5));
   background: linear-gradient(0deg, #a3a3aa 0%, #f0f2f5 35%);
+  overflow-y: hidden;
 }
 
 .intro .user-images .cover-photo-container .cover-photo {
   -o-object-fit: cover;
      object-fit: cover;
+  min-width: 100%;
 }
 
 .intro .user-images .profile-picture {
@@ -564,6 +566,8 @@
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   color: #333;
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.5;
 }
 
 a {
@@ -906,6 +910,22 @@ body {
 
 .home-header ul {
   list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.home-header ul li:first-child {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1420,7 +1440,7 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin-bottom: 15px;
+  margin-bottom: 25px;
 }
 
 .posts .post-list article .user-info figcaption {

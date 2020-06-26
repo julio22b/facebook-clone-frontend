@@ -29,6 +29,7 @@ export default function FindPeople({ currentUser }) {
                     person_id={person._id}
                     first_name={person.first_name}
                     last_name={person.last_name}
+                    profile_picture={person.profile_picture}
                     btnText={'Add friend'}
                 />
             ))}

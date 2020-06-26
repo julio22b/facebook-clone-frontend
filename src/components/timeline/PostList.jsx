@@ -30,6 +30,7 @@ export default function PostList({ currentUser, socket }) {
             abortCon.abort();
             socket.off('new_post');
         };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [currentUser._id]);
 
     const deletePost = async (post_id, setShowPostActions) => {

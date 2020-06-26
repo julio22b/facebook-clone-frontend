@@ -21,10 +21,14 @@ $red: rgb(211, 72, 72);
     margin: 0;
     box-sizing: border-box;
     color: #333;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.5;
 }
+
 a {
     text-decoration: none;
 }
+
 body {
     background-color: $gray;
     scroll-behavior: smooth;
@@ -246,11 +250,14 @@ body {
         list-style: none;
         @include flex(row, center, center);
 
-        li:first-child img {
-            @extend .placeholder-image;
-            margin-right: 10px;
-            width: 30px !important;
-            height: 30px !important;
+        li:first-child {
+            @include flex(row, center, center);
+            img {
+                @extend .placeholder-image;
+                margin-right: 10px;
+                width: 30px !important;
+                height: 30px !important;
+            }
         }
         li {
             font-weight: bold;
@@ -593,7 +600,7 @@ body {
             }
             .user-info {
                 display: flex;
-                margin-bottom: 15px;
+                margin-bottom: 25px;
                 img {
                     @extend .placeholder-image;
                 }
