@@ -13,6 +13,7 @@ import pen from '../../images/pen.png';
 import deleteIcon from '../../images/delete.png';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
+import EditPostForm from './EditPostForm';
 
 export default function Post({
     post_id,
@@ -27,11 +28,13 @@ export default function Post({
     currentUser,
     deletePost,
 }) {
+    const [postContent, setPostContent] = useState(content || '');
     const [postComments, setPostComments] = useState(comments);
     const [commentsCount, setCommentCount] = useState(comments.length || 0);
     const [comment, setComment] = useState('');
     const [postReactions, setPostReactions] = useState(reactions);
     const [showPostActions, setShowPostActions] = useState(false);
+    const [showEditForm, setShowEditForm] = useState(false);
     const currentUserID = currentUser._id ? currentUser._id : currentUser;
 
     const createComment = async (e) => {
@@ -82,7 +85,10 @@ export default function Post({
                     {showPostActions && (
                         <div className="btn-wrapper">
                             <div>
-                                <button>
+                                <button
+                                    type="button"
+                                    onClick={() => setShowEditForm(!showEditForm)}
+                                >
                                     <img src={pen} alt=" " />
                                     Edit
                                 </button>
@@ -113,8 +119,17 @@ export default function Post({
                     </figcaption>
                 </figure>
             </Link>
+            {currentUserID === user_id && (
+                <EditPostForm
+                    oldContent={content}
+                    showEditForm={showEditForm}
+                    setShowEditForm={setShowEditForm}
+                    post_id={post_id}
+                    setPostContent={setPostContent}
+                />
+            )}
             <figure className="post-content" onClick={() => setShowPostActions(false)}>
-                <figcaption>{content}</figcaption>
+                {!showEditForm && <figcaption>{postContent}</figcaption>}
                 <img src={image || ''} alt="" className="post-img" />
             </figure>
             <div className="reactions-comment-count">

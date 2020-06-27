@@ -39,6 +39,7 @@ export default function PostList({ currentUser, socket }) {
             mode: 'cors',
             headers: headers(),
         });
+        // eslint-disable-next-line no-unused-vars
         const data = await response.json();
         setPosts((prevState) => prevState.filter((post) => post._id !== post_id));
         setShowPostActions(false);

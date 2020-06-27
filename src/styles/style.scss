@@ -555,6 +555,11 @@ body {
             background-color: white;
             border-radius: 5px;
             position: relative;
+            .post-edit-form {
+                input {
+                    margin-left: 0;
+                }
+            }
             .post-actions {
                 position: absolute;
                 top: 10px;
@@ -569,6 +574,7 @@ body {
                 &:hover {
                     background-color: $gray;
                 }
+
                 .btn-wrapper {
                     position: absolute;
                     bottom: -115px;

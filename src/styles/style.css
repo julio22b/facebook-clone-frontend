@@ -1365,6 +1365,10 @@ body {
   position: relative;
 }
 
+.posts .post-list article .post-edit-form input {
+  margin-left: 0;
+}
+
 .posts .post-list article .post-actions {
   position: absolute;
   top: 10px;
