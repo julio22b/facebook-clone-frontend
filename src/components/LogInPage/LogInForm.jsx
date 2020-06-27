@@ -9,7 +9,6 @@ export default function LogInForm() {
     const history = useHistory();
 
     const logIn = async (e) => {
-        console.log('log in');
         e.preventDefault();
         const formData = {
             email,
@@ -23,7 +22,6 @@ export default function LogInForm() {
                 body: JSON.stringify(formData),
             });
             const user = await response.json();
-            console.log(user);
             if (user.token) {
                 localStorage.setItem('user', JSON.stringify(user));
                 history.push(`/users/${user.user_id}/timeline`);
@@ -32,7 +30,7 @@ export default function LogInForm() {
                 setErrors(true);
             }
         } catch (error) {
-            console.log(error);
+            console.error(error);
         }
     };
 

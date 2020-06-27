@@ -18,10 +18,11 @@
                 rgba(163, 163, 170, 1) 0%,
                 rgba(240, 242, 245, 1) 35%
             );
-            overflow-y: hidden;
+            overflow: hidden;
+            max-height: 400px;
             .cover-photo {
                 object-fit: cover;
-                min-width: 100%;
+                max-width: 100%;
             }
         }
 

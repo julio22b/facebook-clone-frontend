@@ -58,7 +58,6 @@ export default function EditProfileForm({
         reader.onload = () => {
             setPic(reader.result);
         };
-        console.log(reader);
     };
 
     return (

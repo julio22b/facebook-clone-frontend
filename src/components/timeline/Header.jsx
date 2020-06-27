@@ -43,7 +43,6 @@ export default function Header({
                 },
             );
             const searchResult = await response.json();
-            console.log(searchResult);
             if (response.status === 200) {
                 history.push(`/users/${user_id}/search?q=${searchPeopleQuery}`, {
                     searchResult,

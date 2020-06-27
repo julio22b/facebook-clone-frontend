@@ -852,6 +852,7 @@ body {
                     font-weight: bold;
                     border-radius: 50%;
                     padding: 0.7em;
+                    min-width: 30px;
                     &:hover {
                         background-color: rgba(222, 222, 236, 0.644);
                     }

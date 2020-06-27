@@ -157,13 +157,14 @@
   background: #a3a3aa;
   background: -webkit-gradient(linear, left bottom, left top, from(#a3a3aa), color-stop(35%, #f0f2f5));
   background: linear-gradient(0deg, #a3a3aa 0%, #f0f2f5 35%);
-  overflow-y: hidden;
+  overflow: hidden;
+  max-height: 400px;
 }
 
 .intro .user-images .cover-photo-container .cover-photo {
   -o-object-fit: cover;
      object-fit: cover;
-  min-width: 100%;
+  max-width: 100%;
 }
 
 .intro .user-images .profile-picture {
@@ -1863,6 +1864,7 @@ body {
   font-weight: bold;
   border-radius: 50%;
   padding: 0.7em;
+  min-width: 30px;
 }
 
 .right-col .contacts-chat .chat .friend-info button:hover {

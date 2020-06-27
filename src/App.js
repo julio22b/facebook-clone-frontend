@@ -6,10 +6,12 @@ import Timeline from './components/timeline/Timeline';
 import Profile from './components/profile/Profile';
 import SearchPeople from './components/timeline/SearchPeople';
 import headers from './services/headers';
+import PrivateRoute from './components/PrivateRoute';
 
 function App() {
     const [loggedInUser, setLoggedInUser] = useState({});
     const user = JSON.parse(localStorage.getItem('user')) || '';
+    const [authenticated, setAuthenticated] = useState(user || '');
     const user_id = user ? user.user_id : '';
 
     useEffect(() => {
@@ -33,26 +35,31 @@ function App() {
     const logOut = () => {
         localStorage.removeItem('user');
         setLoggedInUser({});
+        setAuthenticated(false);
     };
 
     return (
         <>
             <Router>
                 <Switch>
-                    <Route path="/users/log-in" exact component={LogInPage} />
                     <Route
-                        path="/users/:id/timeline"
+                        path="/users/log-in"
                         exact
+                        render={(props) => <LogInPage {...props} authenticated={authenticated} />}
+                    />
+                    <PrivateRoute
+                        exact
+                        path={'/users/:id/timeline'}
                         render={(props) => <Timeline {...props} logOut={logOut} />}
                     />
-                    <Route
-                        path="/users/:id/profile"
+                    <PrivateRoute
                         exact
+                        path={'/users/:id/profile'}
                         render={(props) => (
                             <Profile {...props} currentUser={loggedInUser} logOut={logOut} />
                         )}
                     />
-                    <Route
+                    <PrivateRoute
                         path="/users/:id/search"
                         exact
                         render={(props) => (

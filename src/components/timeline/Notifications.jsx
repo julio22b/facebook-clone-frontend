@@ -12,7 +12,6 @@ export default function Notifications({ showNotifications, friend_requests, pend
                 { method: 'put', mode: 'cors', headers: headers() },
             );
             const data = await response.json();
-            console.log(data);
             if (response.status === 200) {
                 setShowResult(true);
                 setResultText(resultText);

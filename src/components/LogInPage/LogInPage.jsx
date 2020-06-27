@@ -3,8 +3,12 @@ import LogInForm from './LogInForm';
 import SignUpForm from './SignUpForm';
 import Map from './Map';
 import facebookLogo from '../../images/facebook-logo.png';
+import { Redirect } from 'react-router-dom';
+export default function LogInHeader({ authenticated }) {
+    if (authenticated.message) {
+        return <Redirect to={`/users/${authenticated.user_id}/timeline`} />;
+    }
 
-export default function LogInHeader() {
     return (
         <>
             <header className="log-in-page-header">

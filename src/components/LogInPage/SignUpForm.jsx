@@ -37,7 +37,7 @@ export default function SignUpForm() {
                 setErrors(data.errors);
             }
         } catch (error) {
-            console.log(error);
+            console.error(error);
         }
     };
 

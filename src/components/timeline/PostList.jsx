@@ -40,7 +40,6 @@ export default function PostList({ currentUser, socket }) {
             headers: headers(),
         });
         const data = await response.json();
-        console.log(data);
         setPosts((prevState) => prevState.filter((post) => post._id !== post_id));
         setShowPostActions(false);
     };

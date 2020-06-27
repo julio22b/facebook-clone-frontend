@@ -21,6 +21,7 @@ export default function Timeline({ match, logOut }) {
                 console.error(err);
             }
         };
+
         getUser();
     }, [match.params.id]);
 
@@ -30,9 +31,7 @@ export default function Timeline({ match, logOut }) {
 
     useEffect(() => {
         socket.emit('connection', user._id);
-        socket.on('connected_users', (usersArr) => {
-            console.log(usersArr);
-        });
+        socket.on('connected_users', (usersArr) => {});
         return () => {
             socket.off('connected_users');
         };
