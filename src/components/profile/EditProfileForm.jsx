@@ -23,6 +23,7 @@ export default function EditProfileForm({
 
     const updateProfile = async (e) => {
         e.preventDefault();
+        setBtnText('Waiting...');
         try {
             const userData = {
                 profile_picture: profile_picture || image,
@@ -92,7 +93,7 @@ export default function EditProfileForm({
                     </div>
                     <div>
                         <img
-                            src={imagePreview || profile_picture}
+                            src={imagePreview || image}
                             alt=""
                             className="profile-picture-preview"
                         />

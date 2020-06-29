@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import Post from './Post';
 import headers from '../../services/headers';
 import CreatePost from './CreatePost';
+import Loader from './Loader';
 
 export default function PostList({ currentUser, socket }) {
     const [posts, setPosts] = useState([]);
+    const [showLoader, setShowLoader] = useState(true);
     const friends = currentUser.friends && currentUser.friends.map((friend) => friend._id);
 
     useEffect(() => {
@@ -17,6 +19,7 @@ export default function PostList({ currentUser, socket }) {
             });
             const postsData = await response.json();
             setPosts(postsData);
+            setShowLoader(!showLoader);
             socket.on('new_post', (post) => {
                 if (post.user._id !== currentUser._id && friends.includes(post.user._id)) {
                     setPosts((posts) => [post, ...posts]);
@@ -45,7 +48,6 @@ export default function PostList({ currentUser, socket }) {
         setShowPostActions(false);
     };
 
-    // NEED TO SORT POSTS!!!
     return (
         <>
             <CreatePost
@@ -55,6 +57,7 @@ export default function PostList({ currentUser, socket }) {
                 setPosts={setPosts}
                 socket={socket}
             />
+            <Loader showLoader={showLoader} />
             <section className="post-list">
                 {posts.map((post) => (
                     <Post
