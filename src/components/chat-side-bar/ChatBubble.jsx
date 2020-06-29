@@ -23,11 +23,15 @@ export default function ChatBubble({
             from: currentUserID,
             chatIdentifier,
         });
+        setChatMessages(
+            chatMessages.concat({ to: friend._id, message, from: currentUserID, chatIdentifier }),
+        );
         setMessage('');
     };
 
     useEffect(() => {
         socket.on('new_message', (message) => {
+            console.log(message);
             if (
                 message.chatIdentifier.includes(friend._id) &&
                 message.chatIdentifier.includes(currentUserID)
