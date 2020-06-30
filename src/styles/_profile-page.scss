@@ -10,6 +10,7 @@
         position: relative;
         .cover-photo-container {
             width: 900px;
+            max-width: 100%;
             height: 350px;
             border-radius: 10px;
             background: rgb(163, 163, 170);
@@ -42,6 +43,7 @@
         margin: 0 auto;
         padding: 1.5em 0;
         width: 900px;
+        max-width: 100%;
         @include flex(column, center, flex-end);
         & > p:first-of-type {
             text-align: center;
@@ -180,6 +182,9 @@
     .posts {
         margin-left: 15px;
         margin-right: 0;
+        @media screen and(max-width:960px) {
+            width: 90%;
+        }
     }
     .user-friends {
         background-color: white;
@@ -187,6 +192,9 @@
         margin: 4em 0;
         padding: 1em;
         width: 350px;
+        @media screen and(max-width:960px) {
+            display: none;
+        }
         h2 {
             display: flex;
             justify-content: space-between;

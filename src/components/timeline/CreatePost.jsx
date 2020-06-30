@@ -57,6 +57,7 @@ export default function CreatePost({ username, profile_picture, user_id, setPost
                     placeholder={`What's on your mind, ${username || ''}?`}
                     className="text-input"
                     value={content}
+                    autoComplete="off"
                 ></input>{' '}
                 {/* THS NEEDS TO INCREASE IN HEIGHT AS THE USER TYPES */}
             </div>

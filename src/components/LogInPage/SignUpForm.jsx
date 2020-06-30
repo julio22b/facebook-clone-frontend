@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 export default function SignUpForm() {
     const [first_name, setFirst_name] = useState('');
@@ -11,6 +12,8 @@ export default function SignUpForm() {
     const [year, setYear] = useState('1995');
     const [gender, setGender] = useState('');
     const [errors, setErrors] = useState([]);
+    const [btnText, setBtnText] = useState('Sign up');
+    const history = useHistory();
 
     const signUp = async (e) => {
         e.preventDefault();
@@ -35,6 +38,33 @@ export default function SignUpForm() {
             const data = await response.json();
             if (data.errors) {
                 setErrors(data.errors);
+            }
+            setBtnText('Account created. Logging in...');
+            logIn();
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    const logIn = async () => {
+        const formData = {
+            email,
+            password,
+        };
+        try {
+            const response = await fetch('http://localhost:4000/users/log-in', {
+                method: 'post',
+                mode: 'cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData),
+            });
+            const user = await response.json();
+            if (user.token) {
+                localStorage.setItem('user', JSON.stringify(user));
+                history.push(`/users/${user.user_id}/timeline`);
+                window.location.reload();
+            } else if (user.message) {
+                setErrors(true);
             }
         } catch (error) {
             console.error(error);
@@ -295,7 +325,7 @@ export default function SignUpForm() {
                     ))}
                 </ul>
             )}
-            <button>Sign up</button>
+            <button>{btnText}</button>
         </form>
     );
 }

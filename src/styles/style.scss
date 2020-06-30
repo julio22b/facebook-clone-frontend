@@ -67,7 +67,6 @@ body {
         display: flex;
         align-items: flex-end;
         min-width: 300px;
-        width: 30%;
         flex-wrap: wrap;
         & > p {
             width: 100%;
@@ -200,6 +199,56 @@ body {
     }
 }
 
+@media screen and (max-width: 1380px) {
+    .sign-up-map-container {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .sign-up-form {
+            width: 60%;
+            order: -1;
+        }
+        & > article {
+            margin: 0;
+        }
+    }
+    .left-col {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 960px) {
+    .log-in-page-header {
+        & > div:first-child {
+            display: none;
+        }
+    }
+    .sign-up-map-container {
+        .sign-up-form {
+            width: 90%;
+        }
+    }
+    .right-col {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .log-in-page-header {
+        justify-content: flex-start;
+        .log-in-form {
+            flex-wrap: wrap;
+            button {
+                margin-top: 1em;
+            }
+        }
+    }
+    .sign-up-map-container article img {
+        max-width: 98%;
+        margin: 0 auto;
+    }
+}
+
 .form-errors {
     padding: 1em 0;
     list-style-position: inside;
@@ -221,6 +270,9 @@ body {
     form:first-of-type {
         @include flex(row, space-between, center);
         width: 300px;
+        @media screen and(max-width: 960px) {
+            display: none;
+        }
         input {
             padding: 0.7em 1em;
             border: none;
@@ -229,6 +281,7 @@ body {
             flex: 1;
             margin-left: 10px;
             font-size: 1.05rem;
+            outline: none;
         }
         button {
             width: 1px;
@@ -504,7 +557,14 @@ body {
 
 .posts {
     width: 40%;
+    min-width: 360px;
     margin: 2em;
+    @media screen and (max-width: 960px) {
+        width: 80%;
+        max-width: 500px;
+        margin-right: 0;
+        margin-left: 0;
+    }
     .create-post {
         padding: 1em;
         box-shadow: 0 0 3px $border-gray;
@@ -529,6 +589,7 @@ body {
                 font-size: 1.1rem;
                 margin-left: 10px;
                 resize: vertical;
+                outline: none;
             }
         }
         .image-preview {
