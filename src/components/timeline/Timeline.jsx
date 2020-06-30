@@ -12,7 +12,7 @@ export default function Timeline({ match, logOut }) {
     useEffect(() => {
         const getUser = async () => {
             try {
-                const response = await fetch(`http://localhost:4000/users/${match.params.id}`, {
+                const response = await fetch(`/users/${match.params.id}`, {
                     headers: headers(),
                 });
                 const userData = await response.json();
@@ -25,7 +25,7 @@ export default function Timeline({ match, logOut }) {
         getUser();
     }, [match.params.id]);
 
-    const socket = io.connect('http://localhost:4000', {
+    const socket = io.connect('', {
         transports: ['websocket', 'polling', 'flashsocket'],
     });
 

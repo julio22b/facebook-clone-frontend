@@ -30,7 +30,7 @@ export default function Intro({
     const sendFriendRequest = async () => {
         try {
             const response = await fetch(
-                `http://localhost:4000/users/friend-request/${currentUser}/send/${notLoggedInUser}`,
+                `/users/friend-request/${currentUser}/send/${notLoggedInUser}`,
                 { method: 'post', mode: 'cors', headers: headers() },
             );
             const data = await response.json();

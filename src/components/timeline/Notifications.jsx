@@ -8,7 +8,7 @@ export default function Notifications({ showNotifications, friend_requests, pend
     const processRequest = async (fromUserID, toUserID, acceptOrDecline, resultText) => {
         try {
             const response = await fetch(
-                `http://localhost:4000/users/friend-request/${fromUserID}/${acceptOrDecline}/${toUserID}`,
+                `/users/friend-request/${fromUserID}/${acceptOrDecline}/${toUserID}`,
                 { method: 'put', mode: 'cors', headers: headers() },
             );
             const data = await response.json();

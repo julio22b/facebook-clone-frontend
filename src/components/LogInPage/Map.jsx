@@ -3,7 +3,7 @@ import shareMap from '../../images/log-in-map.png';
 
 export default function Map() {
     /* const fblogin = async () => {
-        const response = await fetch('http://localhost:4000/users/log-in/facebook', {
+        const response = await fetch('/users/log-in/facebook', {
             mode: 'no-cors',
         });
         console.log(response);

@@ -15,7 +15,7 @@ export default function LogInForm() {
             password,
         };
         try {
-            const response = await fetch('http://localhost:4000/users/log-in', {
+            const response = await fetch('/users/log-in', {
                 method: 'post',
                 mode: 'cors',
                 headers: { 'Content-Type': 'application/json' },

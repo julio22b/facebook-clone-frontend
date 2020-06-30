@@ -7,10 +7,10 @@ export default function FindPeople({ currentUser }) {
 
     useEffect(() => {
         const getPeople = async () => {
-            const response = await fetch(
-                `http://localhost:4000/users/${currentUser._id}/new-people?limit=5`,
-                { headers: headers(), mode: 'cors' },
-            );
+            const response = await fetch(`/users/${currentUser._id}/new-people?limit=5`, {
+                headers: headers(),
+                mode: 'cors',
+            });
             const nonFriends = await response.json();
             setPeople(nonFriends);
         };

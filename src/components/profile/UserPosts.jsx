@@ -10,14 +10,11 @@ export default function UserPosts({ currentUser, profile_picture }) {
         const signal = abortCon.signal;
 
         const getUserPosts = async () => {
-            const response = await fetch(
-                `http://localhost:4000/users/${currentUser}/profile/posts`,
-                {
-                    mode: 'cors',
-                    headers: headers(),
-                    signal,
-                },
-            );
+            const response = await fetch(`/users/${currentUser}/profile/posts`, {
+                mode: 'cors',
+                headers: headers(),
+                signal,
+            });
             const userPosts = await response.json();
             setPosts(userPosts);
         };
@@ -30,7 +27,7 @@ export default function UserPosts({ currentUser, profile_picture }) {
     }, [currentUser]);
 
     const deletePost = async (post_id, setShowPostActions) => {
-        const response = await fetch(`http://localhost:4000/posts/${post_id}`, {
+        const response = await fetch(`/posts/${post_id}`, {
             method: 'delete',
             mode: 'cors',
             headers: headers(),

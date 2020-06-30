@@ -14,10 +14,11 @@ export default function Person({
     const [requestStatus, setRequestStatus] = useState('');
 
     const sendFriendRequest = async () => {
-        const response = await fetch(
-            `http://localhost:4000/users/friend-request/${current_user_id}/send/${person_id}`,
-            { method: 'post', mode: 'cors', headers: headers() },
-        );
+        const response = await fetch(`/users/friend-request/${current_user_id}/send/${person_id}`, {
+            method: 'post',
+            mode: 'cors',
+            headers: headers(),
+        });
         const data = await response.json();
         setRequestStatus(data.message);
     };

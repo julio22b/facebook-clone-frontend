@@ -32,7 +32,7 @@ export default function EditProfileForm({
                 first_name: first_name || userFirstName,
                 last_name: last_name || userLastName,
             };
-            const response = await fetch(`http://localhost:4000/users/${currentUser}/profile`, {
+            const response = await fetch(`/users/${currentUser}/profile`, {
                 method: 'put',
                 mode: 'cors',
                 headers: headers(),
