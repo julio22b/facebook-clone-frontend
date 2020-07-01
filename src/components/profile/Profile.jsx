@@ -10,7 +10,7 @@ export default function Profile({ match, currentUser, logOut }) {
 
     useEffect(() => {
         const getUser = async () => {
-            const response = await fetch(`/users/${match.params.id}`, {
+            const response = await fetch(`/api/users/${match.params.id}`, {
                 mode: 'cors',
                 headers: headers(),
             });

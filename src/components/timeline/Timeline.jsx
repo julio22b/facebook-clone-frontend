@@ -12,7 +12,7 @@ export default function Timeline({ match, logOut }) {
     useEffect(() => {
         const getUser = async () => {
             try {
-                const response = await fetch(`/users/${match.params.id}`, {
+                const response = await fetch(`/api/users/${match.params.id}`, {
                     headers: headers(),
                 });
                 const userData = await response.json();

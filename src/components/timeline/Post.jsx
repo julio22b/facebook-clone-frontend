@@ -43,7 +43,7 @@ export default function Post({
             content: comment,
             user_id: currentUser,
         };
-        const response = await fetch(`/posts/${post_id}/comment`, {
+        const response = await fetch(`/api/posts/${post_id}/comment`, {
             method: 'put',
             mode: 'cors',
             headers: headers(),

@@ -17,7 +17,7 @@ function App() {
     useEffect(() => {
         const getUserInfo = async () => {
             try {
-                const response = await fetch(`/users/${user_id}`, {
+                const response = await fetch(`/api/users/${user_id}`, {
                     mode: 'cors',
                     headers: headers(),
                 });

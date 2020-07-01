@@ -7,7 +7,7 @@ export default function FindPeople({ currentUser }) {
 
     useEffect(() => {
         const getPeople = async () => {
-            const response = await fetch(`/users/${currentUser._id}/new-people?limit=5`, {
+            const response = await fetch(`/api/users/${currentUser._id}/new-people?limit=5`, {
                 headers: headers(),
                 mode: 'cors',
             });

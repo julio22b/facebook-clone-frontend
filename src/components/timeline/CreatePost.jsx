@@ -17,7 +17,7 @@ export default function CreatePost({ username, profile_picture, user_id, setPost
             user_id,
         };
         try {
-            const response = await fetch('/posts/create', {
+            const response = await fetch('/api/posts/create', {
                 method: 'post',
                 mode: 'cors',
                 headers: { 'Content-type': 'application/json', Authorization: authHeader() },

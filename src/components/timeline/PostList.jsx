@@ -13,7 +13,7 @@ export default function PostList({ currentUser, socket }) {
         const abortCon = new AbortController();
         const signal = abortCon.signal;
         const getPosts = async () => {
-            const response = await fetch(`/posts?user=${currentUser._id}`, {
+            const response = await fetch(`/api/posts?user=${currentUser._id}`, {
                 headers: headers(),
                 signal,
             });
@@ -37,7 +37,7 @@ export default function PostList({ currentUser, socket }) {
     }, [currentUser._id]);
 
     const deletePost = async (post_id, setShowPostActions) => {
-        const response = await fetch(`/posts/${post_id}`, {
+        const response = await fetch(`/api/posts/${post_id}`, {
             method: 'delete',
             mode: 'cors',
             headers: headers(),

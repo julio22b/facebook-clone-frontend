@@ -12,7 +12,7 @@ export default function EditPostForm({
     const editPost = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch(`/posts/${post_id}`, {
+            const response = await fetch(`/api/posts/${post_id}`, {
                 method: 'put',
                 mode: 'cors',
                 headers: headers(),

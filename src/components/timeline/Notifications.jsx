@@ -8,9 +8,10 @@ export default function Notifications({ showNotifications, friend_requests, pend
     const processRequest = async (fromUserID, toUserID, acceptOrDecline, resultText) => {
         try {
             const response = await fetch(
-                `/users/friend-request/${fromUserID}/${acceptOrDecline}/${toUserID}`,
+                `/api/users/friend-request/${fromUserID}/${acceptOrDecline}/${toUserID}`,
                 { method: 'put', mode: 'cors', headers: headers() },
             );
+            // eslint-disable-next-line no-unused-vars
             const data = await response.json();
             if (response.status === 200) {
                 setShowResult(true);

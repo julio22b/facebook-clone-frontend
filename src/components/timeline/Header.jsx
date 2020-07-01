@@ -36,7 +36,7 @@ export default function Header({
         e.preventDefault();
         try {
             const response = await fetch(
-                `/users/${user_id}/search?limit=50&search=${searchPeopleQuery}`,
+                `/api/users/${user_id}/search?limit=50&search=${searchPeopleQuery}`,
                 {
                     headers: headers(),
                     mode: 'cors',

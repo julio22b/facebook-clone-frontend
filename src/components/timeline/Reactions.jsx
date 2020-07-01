@@ -13,7 +13,7 @@ export default function Reactions({ post_id, user_id, setPostReactions }) {
             reaction: type,
             user_id,
         };
-        const response = await fetch(`/posts/${post_id}/react`, {
+        const response = await fetch(`/api/posts/${post_id}/react`, {
             method: 'put',
             mode: 'cors',
             headers: headers(),
