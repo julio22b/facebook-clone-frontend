@@ -41,7 +41,7 @@ export default function Post({
         e.preventDefault();
         const newComment = {
             content: comment,
-            user_id: currentUser, // MAYBE IT'S THIS ID THAT'S WRONG
+            user_id: currentUser,
         };
         const response = await fetch(`/api/posts/${post_id}/comment`, {
             method: 'put',
@@ -70,6 +70,8 @@ export default function Post({
         { type: sads, img: sad, key: 5 },
         { type: angrys, img: angry, key: 6 },
     ];
+
+    const sortedReactionCountes = reactionCounts.sort((a, b) => b.type - a.type);
 
     const commentInput = useRef();
     const focusCommentInput = () => {
@@ -134,11 +136,12 @@ export default function Post({
             </figure>
             <div className="reactions-comment-count">
                 <ul className="reactions">
-                    {reactionCounts.map(
+                    {sortedReactionCountes.map(
                         (reaction) =>
                             !!reaction.type && (
                                 <li key={reaction.key}>
                                     <img src={reaction.img} alt="" />
+                                    <span className="reaction-counter">{reaction.type}</span>
                                 </li>
                             ),
                     )}

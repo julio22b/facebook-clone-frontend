@@ -1674,6 +1674,18 @@ body {
   padding: 0.5em 0;
 }
 
+.posts .post-list article .reactions-comment-count .reaction-counter {
+  background-color: rgba(0, 0, 0, 0.815);
+  color: #f0f2f5;
+  display: inline-block;
+  font-size: 0.6rem;
+  padding: 2px 6px;
+  border-radius: 5px;
+  position: absolute;
+  top: -25px;
+  opacity: 0;
+}
+
 .posts .post-list article .reactions-comment-count .reactions {
   list-style: none;
   display: -webkit-box;
@@ -1694,6 +1706,11 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  position: relative;
+}
+
+.posts .post-list article .reactions-comment-count .reactions li:hover span {
+  opacity: 1;
 }
 
 .posts .post-list article .reactions-comment-count .reactions li:first-child {
