@@ -214,6 +214,9 @@
             grid-template-columns: 1fr 1fr 1fr;
             gap: 12px;
             margin-top: 1em;
+            a {
+                display: inline-block;
+            }
             figure {
                 @include flex(column, flex-start, center);
                 img {
@@ -225,6 +228,8 @@
                 figcaption {
                     margin-top: 0.5em;
                     font-weight: bold;
+                    word-break: break-all;
+                    font-size: 0.9rem;
                 }
             }
         }

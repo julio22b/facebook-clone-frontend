@@ -44,7 +44,11 @@ export default function Profile({ match, currentUser, logOut }) {
                 />
                 <div className="cols-wrapper">
                     <Friends friends={user.friends} />
-                    <UserPosts currentUser={user._id} profile_picture={user.profile_picture} />
+                    <UserPosts
+                        currentUser={currentUser._id}
+                        profile_user_id={user._id}
+                        profile_picture={user.profile_picture}
+                    />
                 </div>
             </section>
         </>

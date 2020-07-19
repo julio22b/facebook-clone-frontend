@@ -41,7 +41,7 @@ export default function Post({
         e.preventDefault();
         const newComment = {
             content: comment,
-            user_id: currentUser,
+            user_id: currentUser, // MAYBE IT'S THIS ID THAT'S WRONG
         };
         const response = await fetch(`/api/posts/${post_id}/comment`, {
             method: 'put',

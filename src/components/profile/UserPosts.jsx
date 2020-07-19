@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Post from '../timeline/Post';
 import headers from '../../services/headers';
 
-export default function UserPosts({ currentUser, profile_picture }) {
+export default function UserPosts({ currentUser, profile_user_id, profile_picture }) {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
@@ -10,7 +10,7 @@ export default function UserPosts({ currentUser, profile_picture }) {
         const signal = abortCon.signal;
 
         const getUserPosts = async () => {
-            const response = await fetch(`/api/users/${currentUser}/profile/posts`, {
+            const response = await fetch(`/api/users/${profile_user_id}/profile/posts`, {
                 mode: 'cors',
                 headers: headers(),
                 signal,
@@ -24,7 +24,7 @@ export default function UserPosts({ currentUser, profile_picture }) {
         return function () {
             abortCon.abort();
         };
-    }, [currentUser]);
+    }, [currentUser, profile_user_id]);
 
     const deletePost = async (post_id, setShowPostActions) => {
         const response = await fetch(`/api/posts/${post_id}`, {
