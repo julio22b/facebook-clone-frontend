@@ -1,4 +1,4 @@
-# Letterboxd
+# Fakebook
 
 Fakebook is a, well, Facebook clone made with React and Socket.io for private chatting and live feed. It was made for the [final project](https://www.theodinproject.com/courses/nodejs/lessons/odin-book) of the NodeJS course from the The Odin Project's curriculum
 
